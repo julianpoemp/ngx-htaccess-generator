@@ -1,6 +1,6 @@
 # ngx-htaccess-generator
 
-The goal of this project is to create a easy-to-use generator that creates .htaccess files for individual Angular applications.
+The goal of this project is to create a easy-to-use generator that creates .htaccess files for individual Angular applications. You can finde the web-application here: https://julianpoemp.github.io/ngx-htaccess-generator/.
 
 ## Why?
 
