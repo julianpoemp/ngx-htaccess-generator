@@ -2,6 +2,27 @@
   "textDirection": "left",
   "general": {
     "yes": "Yes",
-    "no": "No"
-  }
+    "no": "No",
+    "download": "Download",
+    "generate htaccess file": "Generate htaccess file"
+  },
+  "introduction": "Generate the .htaccess file for your Angular web-application and place it next to your app's index.html",
+  "questions": {
+    "baseHref": {
+      "header": "Have you set the base-href attribute correctly?",
+      "content": "If your web-application is installed directly on the root on your doomain you don't need to change your baseHref attribute. Otherwise set the base-href attribute with the path from the root:<br><code>ng build --prod --base-href \"/directory/app/\"</code>"
+    },
+    "httpsRedirection": {
+      "header": "Do you need a redirection from HTTP to HTTPS?"
+    },
+    "exclusions": {
+      "header": "Do you want to exclude subdirectories?",
+      "description": "Add the directories:"
+    },
+    "browserCaching": {
+      "header": "Do you want to prevent browser caching?",
+      "description": "In some cases you will face the browser caching issue: files with the same name will be cached by the browser and loaded regardless of whether the file's content was changed or not. That often happens with files from the assets folder."
+    }
+  },
+  "downloadNotice": "Rename the file from \"htaccess.txt\" to \".htaccess\" after the download finished."
 }

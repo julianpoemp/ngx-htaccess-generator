@@ -37,7 +37,9 @@
 <div class="container" style="margin-top:20px;">
   <div class="text-center">
     <h1>Angular htaccess generator</h1>
-    <p>Mit diesem Generator kannst Du deine optimale htaccess Datei für deine Angular App generieren.</p>
+    <p>
+      {{"introduction" | transloco}}
+    </p>
   </div>
 
   <div class="card">
@@ -45,7 +47,7 @@
       <div class="row">
         <div class="col-10">
           <div class="question">
-            Hast Du das base-href Attribut richtig gesetzt?
+            {{"questions.baseHref.header" | transloco}}
           </div>
         </div>
         <div class="col-2" style="text-align: right;">
@@ -60,11 +62,7 @@
         </div>
       </div>
     </div>
-    <div class="card-body">
-      Wenn deine WebApp direkt auf der Hauptdomain installiert wird, brauchst Du keine weiteren Schritte unternehmen.
-      Falls deine WebApp in einem Unterverzeichnis installiert werden soll, musst du dein baseHref Attribut ändern.
-      Setze dafür das baseHref Attribut wie z.B.:
-      <br><code>ng build --prod --base-href "/directory/app/"</code>
+    <div class="card-body" [innerHTML]="'questions.baseHref.content' | transloco">
     </div>
   </div>
 
@@ -73,7 +71,7 @@
       <div class="row">
         <div class="col-10">
           <div class="question">
-            Benötigst Du eine Weiterleitug zu Https?
+            {{"questions.httpsRedirection.header" | transloco}}
           </div>
         </div>
         <div class="col-2" style="text-align: right;">
@@ -96,7 +94,7 @@
       <div class="row">
         <div class="col-10">
           <div class="question">
-            Möchtest Du Unterverzeichnisse ausschließen?
+            {{"questions.exclusions.header" | transloco}}
           </div>
         </div>
         <div class="col-2" style="text-align: right;">
@@ -114,7 +112,7 @@
     </div>
     <div class="card-body" *ngIf="questions.exclusions.checked" [@fadeInExpandOnEnter] [@fadeOutCollapseOnLeave]>
       <p>
-        Welche Unterverzeichnisse möchtest Du ausschließen?
+        {{"questions.exclusions.description" | transloco}}
       </p>
       <div style="vertical-align: middle;">
         <div style="display: block;">
@@ -146,7 +144,7 @@
       <div class="row">
         <div class="col-10">
           <div class="question">
-            Möchtest Du Browsercaching deaktivieren?
+            {{"questions.browserCaching.header" | transloco}}
           </div>
         </div>
         <div class="col-2" style="text-align: right;">
@@ -163,23 +161,20 @@
       </div>
     </div>
     <div class="card-body">
-      Wenn Du mittels XHR-Request Dateien lädst, die nicht von Angular generiert werden (z.B. aus dem "assets"-Ordner),
-      dann kann das zu Problemen führen: Browser speichern diese Dateien in ihrem Cache ab und laden diese als erstes,
-      sodass Änderungen für Nutzer der webApp nicht sichtbar werden. Um dieses Problem zu beheben, beantworte diese
-      Frage mit "Ja".
+      {{"questions.browserCaching.description" | transloco}}
     </div>
   </div>
 
   <div style="text-align: center; margin-top:20px;">
     <button class="btn btn-primary btn-lg" (click)="generateHtaccessFile()">
       <fa-icon [icon]="['fas', 'cogs']"></fa-icon>
-      Generiere htaccess Datei
+      {{"general.generate htaccess file" | transloco}}
     </button>
-    <a *ngIf="htaccessFile.blobURL !== null" class="btn btn-success btn-lg" style="margin-left:10px;" [href]="htaccessFile.blobURL" download="htaccess"><fa-icon [icon]="['fas', 'file-download']"></fa-icon> Download</a>
+    <a *ngIf="htaccessFile.blobURL !== null" class="btn btn-success btn-lg" style="margin-left:10px;" [href]="htaccessFile.blobURL" download="htaccess"><fa-icon [icon]="['fas', 'file-download']"></fa-icon> {{"general.download" | transloco}}</a>
   </div>
   <div class="preview" *ngIf="htaccessFile.blobURL !== null">
     <div class="alert alert-info text-center">
-      Nenne die Datei in ".htaccess" um, nachdem Du sie heruntergeladen hast.
+      {{"downloadNotice" | transloco}}
     </div>
     <textarea style="width:100%;height:600px;">{{htaccessFile.content}}</textarea>
   </div>
