@@ -27,6 +27,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@ngneat/transloco": "^2.14.0",
     "@nth-cloud/ng-toggle": "^5.0.0",
+    "angular-animations": "0.0.10",
     "bootstrap": "^4.4.1",
     "ngx-bootstrap": "^5.5.0",
     "rxjs": "~6.5.4",

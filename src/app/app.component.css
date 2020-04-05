@@ -4,6 +4,27 @@
   margin-left: 10px;
 }
 
-.card{
-  margin-bottom:10px;
+.card {
+  margin-bottom: 10px;
+}
+
+.op-50 {
+  opacity: 0.5;
+}
+
+.exclusion {
+  border-radius: 10px;
+  background-color: whitesmoke;
+  padding: 10px;
+  display: inline-block;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.preview {
+  margin-top: 20px;
+}
+
+.preview textarea {
+  padding: 10px;
 }

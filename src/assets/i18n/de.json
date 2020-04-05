@@ -1,4 +1,7 @@
 {
   "textDirection": "left",
-  "introduction": "Mit diesem Generator kannst Du "
+  "general": {
+    "yes": "Ja",
+    "no": "Nein"
+  }
 }

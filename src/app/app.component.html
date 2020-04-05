@@ -49,11 +49,12 @@
           </div>
         </div>
         <div class="col-2" style="text-align: right;">
-          <ng-toggle offText="No"
+          <ng-toggle offText="{{'general.no' | transloco}}"
                      offColor="secondary"
                      onColor="success"
-                     onText="Yes"
+                     onText="{{'general.yes' | transloco}}"
                      [(ngModel)]="questions.baseHref.checked"
+                     (click)="this.htaccessFile.blobURL = null"
           >
           </ng-toggle>
         </div>
@@ -77,11 +78,12 @@
         </div>
         <div class="col-2" style="text-align: right;">
           <ng-toggle
-            offText="No"
+            offText="{{'general.no' | transloco}}"
             offColor="secondary"
             onColor="success"
-            onText="Yes"
+            onText="{{'general.yes' | transloco}}"
             [(ngModel)]="questions.httpsRedirection.checked"
+            (click)="this.htaccessFile.blobURL = null"
           >
           </ng-toggle>
         </div>
@@ -99,20 +101,43 @@
         </div>
         <div class="col-2" style="text-align: right;">
           <ng-toggle
-            offText="No"
+            offText="{{'general.no' | transloco}}"
             offColor="secondary"
             onColor="success"
-            onText="Yes"
+            onText="{{'general.yes' | transloco}}"
             [(ngModel)]="questions.exclusions.checked"
+            (click)="this.htaccessFile.blobURL = null"
           >
           </ng-toggle>
         </div>
       </div>
     </div>
-    <div class="card-body">
+    <div class="card-body" *ngIf="questions.exclusions.checked" [@fadeInExpandOnEnter] [@fadeOutCollapseOnLeave]>
       <p>
         Welche Unterverzeichnisse möchtest Du ausschließen?
       </p>
+      <div style="vertical-align: middle;">
+        <div style="display: block;">
+
+          <ng-container *ngFor="let exlusion of questions.exclusions.list; let i = index;">
+            <div class="exclusion">
+              {{exlusion}}
+              <fa-icon [icon]="['fas', 'trash-alt']"
+                       style="display: inline-block;cursor: pointer; vertical-align: middle; color:red; margin-top:-2px;margin-left:2px;"
+                       (click)="removeExclusion(i)"></fa-icon>
+            </div>
+          </ng-container>
+        </div>
+        <input type="text" placeholder="directory/" style="display:inline;margin-top:2px;"
+               (keyup)="questions.exclusions.addEnabled = inputElement.value.length > 0" #inputElement/>
+        <fa-icon [icon]="['fas', 'plus-square']" size="2x"
+                 style="display: inline-block;cursor: pointer; vertical-align: middle; color:cornflowerblue;margin-top:-2px;margin-left:2px;"
+                 class="op"
+                 (click)="addExclusion(inputElement)" [ngClass]="{
+                  'op-50': !questions.exclusions.addEnabled
+                 }"
+        ></fa-icon>
+      </div>
     </div>
   </div>
 
@@ -126,11 +151,12 @@
         </div>
         <div class="col-2" style="text-align: right;">
           <ng-toggle
-            offText="No"
+            offText="{{'general.no' | transloco}}"
             offColor="secondary"
             onColor="success"
-            onText="Yes"
+            onText="{{'general.yes' | transloco}}"
             [(ngModel)]="questions.browserCachingDisabled.checked"
+            (click)="this.htaccessFile.blobURL = null"
           >
           </ng-toggle>
         </div>
@@ -145,10 +171,17 @@
   </div>
 
   <div style="text-align: center; margin-top:20px;">
-    <button class="btn-primary btn-primary btn-lg" (click)="generateHtaccessFile()">
+    <button class="btn btn-primary btn-lg" (click)="generateHtaccessFile()">
       <fa-icon [icon]="['fas', 'cogs']"></fa-icon>
       Generiere htaccess Datei
     </button>
+    <a *ngIf="htaccessFile.blobURL !== null" class="btn btn-success btn-lg" style="margin-left:10px;" [href]="htaccessFile.blobURL" download="htaccess"><fa-icon [icon]="['fas', 'file-download']"></fa-icon> Download</a>
+  </div>
+  <div class="preview" *ngIf="htaccessFile.blobURL !== null">
+    <div class="alert alert-info text-center">
+      Nenne die Datei in ".htaccess" um, nachdem Du sie heruntergeladen hast.
+    </div>
+    <textarea style="width:100%;height:600px;">{{htaccessFile.content}}</textarea>
   </div>
   <!--
   <a class="github-button" href="https://github.com/julianpoemp/ngx-htaccess-generator" data-icon="octicon-star" data-size="large" aria-label="Star julianpoemp/ngx-htaccess-generator on GitHub">Star</a>

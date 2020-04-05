@@ -1,1 +1,7 @@
-{}
+{
+  "textDirection": "left",
+  "general": {
+    "yes": "Yes",
+    "no": "No"
+  }
+}
