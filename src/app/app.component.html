@@ -7,8 +7,157 @@
   <meta name="author" content="Julian Poemp">
   <title>Angular htaccess generator</title>
 </head>
-<body class="text-center">
-  <h1>ngx-htaccess-generator</h1>
-  <p>WIP</p>
+<body>
+<a href="https://github.com/julianpoemp/ngx-htaccess-generator"><img width="149" height="149"
+                                                                     src="https://github.blog/wp-content/uploads/2008/12/forkme_left_darkblue_121621.png?resize=149%2C149"
+                                                                     class="attachment-full size-full"
+                                                                     alt="Fork me on GitHub"
+                                                                     style="position: absolute;z-index:1000;"
+                                                                     data-recalc-dims="1"></a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <ul class="navbar-nav mr-auto">
+  </ul>
+
+  <div class="btn-group form-inline my-2 my-lg-0" dropdown>
+    <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle"
+            aria-controls="dropdown-basic">
+      {{selectedLanguage | uppercase}} <span class="caret"></span>
+    </button>
+    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+        role="menu" aria-labelledby="button-basic">
+      <ng-container *ngFor="let lang of availableLanguages">
+        <li role="menuitem" *ngIf="lang !== selectedLanguage" (click)="changeSelectedLanguage(lang)"
+            style="cursor: pointer;">
+          <a class="dropdown-item">{{lang | uppercase}}</a>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</nav>
+<div class="container" style="margin-top:20px;">
+  <div class="text-center">
+    <h1>Angular htaccess generator</h1>
+    <p>Mit diesem Generator kannst Du deine optimale htaccess Datei für deine Angular App generieren.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-10">
+          <div class="question">
+            Hast Du das base-href Attribut richtig gesetzt?
+          </div>
+        </div>
+        <div class="col-2" style="text-align: right;">
+          <ng-toggle offText="No"
+                     offColor="secondary"
+                     onColor="success"
+                     onText="Yes"
+                     [(ngModel)]="questions.baseHref.checked"
+          >
+          </ng-toggle>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      Wenn deine WebApp direkt auf der Hauptdomain installiert wird, brauchst Du keine weiteren Schritte unternehmen.
+      Falls deine WebApp in einem Unterverzeichnis installiert werden soll, musst du dein baseHref Attribut ändern.
+      Setze dafür das baseHref Attribut wie z.B.:
+      <br><code>ng build --prod --base-href "/directory/app/"</code>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-10">
+          <div class="question">
+            Benötigst Du eine Weiterleitug zu Https?
+          </div>
+        </div>
+        <div class="col-2" style="text-align: right;">
+          <ng-toggle
+            offText="No"
+            offColor="secondary"
+            onColor="success"
+            onText="Yes"
+            [(ngModel)]="questions.httpsRedirection.checked"
+          >
+          </ng-toggle>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-10">
+          <div class="question">
+            Möchtest Du Unterverzeichnisse ausschließen?
+          </div>
+        </div>
+        <div class="col-2" style="text-align: right;">
+          <ng-toggle
+            offText="No"
+            offColor="secondary"
+            onColor="success"
+            onText="Yes"
+            [(ngModel)]="questions.exclusions.checked"
+          >
+          </ng-toggle>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>
+        Welche Unterverzeichnisse möchtest Du ausschließen?
+      </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-10">
+          <div class="question">
+            Möchtest Du Browsercaching deaktivieren?
+          </div>
+        </div>
+        <div class="col-2" style="text-align: right;">
+          <ng-toggle
+            offText="No"
+            offColor="secondary"
+            onColor="success"
+            onText="Yes"
+            [(ngModel)]="questions.browserCachingDisabled.checked"
+          >
+          </ng-toggle>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      Wenn Du mittels XHR-Request Dateien lädst, die nicht von Angular generiert werden (z.B. aus dem "assets"-Ordner),
+      dann kann das zu Problemen führen: Browser speichern diese Dateien in ihrem Cache ab und laden diese als erstes,
+      sodass Änderungen für Nutzer der webApp nicht sichtbar werden. Um dieses Problem zu beheben, beantworte diese
+      Frage mit "Ja".
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top:20px;">
+    <button class="btn-primary btn-primary btn-lg" (click)="generateHtaccessFile()">
+      <fa-icon [icon]="['fas', 'cogs']"></fa-icon>
+      Generiere htaccess Datei
+    </button>
+  </div>
+  <!--
+  <a class="github-button" href="https://github.com/julianpoemp/ngx-htaccess-generator" data-icon="octicon-star" data-size="large" aria-label="Star julianpoemp/ngx-htaccess-generator on GitHub">Star</a>
+
+  <a class="github-button" href="https://github.com/julianpoemp/ngx-htaccess-generator/subscription"
+     data-icon="octicon-eye" data-size="large" aria-label="Watch julianpoemp/ngx-htaccess-generator on GitHub">Watch</a>
+     -->
+
+</div>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
