@@ -28,3 +28,13 @@
 .preview textarea {
   padding: 10px;
 }
+
+.github-buttons {
+  text-align: center;
+  margin-bottom:20px;
+}
+
+.github-buttons ntkme-github-button {
+  margin-right: 10px;
+  display: inline-block;
+}
