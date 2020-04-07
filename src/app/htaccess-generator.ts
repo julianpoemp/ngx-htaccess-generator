@@ -2,7 +2,9 @@ export class HtaccessGenerator {
   private content = `# Generated with ngx-htaccess-generator 1.0.0
 # https://julianpoemp.github.io/ngx-htaccess-generator/
 
-<IfModule mod_rewrite.c>`;
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+`;
 
   constructor(private questions: any) {
   }
