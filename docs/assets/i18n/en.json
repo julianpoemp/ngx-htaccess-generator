@@ -4,13 +4,18 @@
     "yes": "Yes",
     "no": "No",
     "download": "Download",
-    "generate htaccess file": "Generate htaccess file"
+    "generate htaccess file": "Generate htaccess file",
+    "copied to clipboard": "Copied to clipboard",
+    "live preview": "Live preview"
   },
-  "introduction": "Generate the .htaccess file for your Angular web-application and place it next to your app's index.html",
+  "introduction": "Generate the .htaccess file for your Angular web-application and place it next to your app's index.html. Rename the file from \"htaccess.txt\" to \".htaccess\" after the download finished.",
+  "alerts": {
+    "server requirements": "In order to make the generated .htaccess file work your web-server must support .htaccess files. Web-servers like that one from github pages do not support .htaccess files."
+  },
   "questions": {
     "baseHref": {
       "header": "Have you set the base-href attribute correctly?",
-      "content": "If your web-application is installed directly on the root on your doomain you don't need to change your baseHref attribute. Otherwise set the base-href attribute with the path from the root:<br><code>ng build --prod --base-href \"/directory/app/\"</code>"
+      "content": "If your web-application is installed directly on the root on your domain you don't need to change your baseHref attribute. Otherwise set the base-href attribute with the path from the root.<br/><br/>For example, if your app is installed on <code>https://myapp.com/directory/app/</code> your base-href attribute must be <code>/directory/app/</code>. Then you would use this command: <code>ng build --prod --base-href \"/directory/app/\"</code>"
     },
     "httpsRedirection": {
       "header": "Do you need a redirection from HTTP to HTTPS?"
@@ -23,6 +28,5 @@
       "header": "Do you want to prevent browser caching?",
       "description": "In some cases you will face the browser caching issue: files with the same name will be cached by the browser and loaded regardless of whether the file's content was changed or not. That often happens with files from the assets folder."
     }
-  },
-  "downloadNotice": "Rename the file from \"htaccess.txt\" to \".htaccess\" after the download finished."
+  }
 }

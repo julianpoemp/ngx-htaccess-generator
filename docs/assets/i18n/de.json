@@ -4,13 +4,18 @@
     "yes": "Ja",
     "no": "Nein",
     "download": "Herunterladen",
-    "generate htaccess file": "Generiere htaccess Datei"
+    "generate htaccess file": "Generiere htaccess Datei",
+    "copied to clipboard": "Inhalt wurde in die Zwischenablage kopiert",
+    "live preview": "Live Vorschau"
   },
-  "introduction": "Generiere die .htaccess Datei für deine Angular Webapplikation und platziere sie neben der index.html Datei.",
+  "introduction": "Generiere die .htaccess Datei für deine Angular Webapplikation und platziere sie neben der index.html Datei. Nenne die Datei in \".htaccess\" um, nachdem Du sie heruntergeladen hast.",
+  "alerts": {
+    "server requirements": "Damit die generierte .htaccess Datei funktioniert, muss dein Webserver .htaccess Dateien unterstützen. Webserver wie der von github pages unterstützen keine .htaccess Dateien."
+  },
   "questions": {
     "baseHref": {
       "header": "Hast Du das base-href Attribut richtig gesetzt?",
-      "content": "Wenn deine WebApp direkt auf der Hauptdomain installiert wird, brauchst Du keine weiteren Schritte unternehmen. Falls deine WebApp in einem Unterverzeichnis installiert werden soll, musst du dein baseHref Attribut ändern. Setze dafür das baseHref Attribut wie z.B.: <br><code>ng build --prod --base-href \"/directory/app/\"</code>"
+      "content": "Wenn deine WebApp direkt auf der Hauptdomain installiert wird, brauchst Du keine weiteren Schritte unternehmen. Falls deine WebApp in einem Unterverzeichnis installiert werden soll, musst du dein baseHref Attribut ändern.<br/><br/>Wenn deine App zum Beispiel auf <code>https://myapp.com/directory/app/</code> installiert ist, muss dein base-href Attribut <code>/directory/app/</code> lauten. Nutze dann folgenden Befehl: <code>ng build --prod --base-href \"/directory/app/\"</code>"
     },
     "httpsRedirection": {
       "header": "Benötigst Du eine Weiterleitung von HTTP zu HTTPS?"
@@ -23,6 +28,5 @@
       "header": "Möchtest Du Browser-Caching verhindern?",
       "description": "In manchen Fällen kommt es zu dem Browser Caching Problem: Dateien mit dem gleichen namen werden aus dem Cache geladen, egal ob sich der Inhalt der Datei geändert hat oder nicht. Das passiert oft mit Dateien aus dem assets Ordner."
     }
-  },
-  "downloadNotice": "Nenne die Datei in \".htaccess\" um, nachdem Du sie heruntergeladen hast."
+  }
 }
