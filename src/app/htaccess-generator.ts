@@ -29,13 +29,16 @@ export class HtaccessGenerator {
 
   private addHttpsRedirection() {
     this.content += `
+  # Redirection to HTTPS:
   RewriteCond %{HTTPS} !on
   RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
   `;
   }
 
   private addExclusions() {
-    this.content += '\n';
+    this.content += `
+  # Excluded directories:
+`;
     for (const exclusion of this.questions.exclusions.list) {
       this.content += `  RewriteRule ^${exclusion}?(.*) %{REQUEST_URI} [L,R=301]\n`;
     }
@@ -43,6 +46,7 @@ export class HtaccessGenerator {
 
   private addDefaults() {
     this.content += `
+  # Redirection of requests to index.html
   RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
   RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
   RewriteRule ^.*$ - [NC,L]
