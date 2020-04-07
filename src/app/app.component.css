@@ -22,19 +22,30 @@
 }
 
 .preview {
-  margin-top: 20px;
 }
 
 .preview textarea {
   padding: 10px;
+  background-color: dimgray;
+  color: whitesmoke;
 }
 
 .github-buttons {
-  text-align: center;
-  margin-bottom:20px;
+  margin-bottom: 20px;
 }
 
 .github-buttons ntkme-github-button {
   margin-right: 10px;
   display: inline-block;
+}
+
+#toolbar-buttons {
+  text-align: right;
+  background-color: whitesmoke;
+  border:1px solid gray;
+  padding:5px;
+}
+
+#toolbar-buttons > * {
+  margin-left: 5px;
 }

@@ -1,9 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {TranslocoService} from '@ngneat/transloco';
 import {fadeInExpandOnEnterAnimation, fadeOutCollapseOnLeaveAnimation} from 'angular-animations';
 import {HtaccessGenerator} from './htaccess-generator';
 import {DomSanitizer} from '@angular/platform-browser';
 import {AppInfo} from './app.info';
+import * as clipboard from 'clipboard-polyfill';
 
 @Component({
   selector: 'app-root',
@@ -41,6 +42,8 @@ export class AppComponent {
 
   availableLanguages = [];
 
+  @ViewChild('pop', {static: true}) clipboardTooltip: any;
+
   public get selectedLanguage(): string {
     return this.translocoService.getActiveLang();
   }
@@ -53,6 +56,8 @@ export class AppComponent {
     if (userLang && this.translocoService.getAvailableLangs().findIndex(a => a === userLang.substring(0, 2)) > -1) {
       this.translocoService.setActiveLang(userLang.substring(0, 2));
     }
+
+    this.generateHtaccessFile();
   }
 
   changeSelectedLanguage(lang: string) {
@@ -60,13 +65,9 @@ export class AppComponent {
   }
 
   generateHtaccessFile() {
-    this.htaccessFile.content = '';
-    this.htaccessFile.blobURL = null;
-
     const generator = new HtaccessGenerator(this.questions, AppInfo.version);
-    const result = generator.generate();
 
-    this.htaccessFile.content = result;
+    this.htaccessFile.content = generator.generate();
     this.htaccessFile.blobURL = this.domSanitizer.bypassSecurityTrustUrl(
       URL.createObjectURL(new File([this.htaccessFile.content], '.htaccess', {type: 'text/plain'}))
     );
@@ -84,12 +85,20 @@ export class AppComponent {
       this.questions.exclusions.list.push(value);
       input.value = '';
       input.focus();
-      this.htaccessFile.blobURL = null;
+      this.generateHtaccessFile();
     }
   }
 
   removeExclusion(i: number) {
     this.questions.exclusions.list.splice(i, 1);
-    this.htaccessFile.blobURL = null;
+    this.generateHtaccessFile();
+  }
+
+  copyToClipBoard() {
+    clipboard.writeText(this.htaccessFile.content);
+    this.clipboardTooltip.show();
+    setTimeout(() => {
+      this.clipboardTooltip.hide();
+    }, 1000);
   }
 }

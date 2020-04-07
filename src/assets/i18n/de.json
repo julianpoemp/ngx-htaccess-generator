@@ -4,9 +4,11 @@
     "yes": "Ja",
     "no": "Nein",
     "download": "Herunterladen",
-    "generate htaccess file": "Generiere htaccess Datei"
+    "generate htaccess file": "Generiere htaccess Datei",
+    "copied to clipboard": "Inhalt wurde in die Zwischenablage kopiert",
+    "live preview": "Live Vorschau"
   },
-  "introduction": "Generiere die .htaccess Datei für deine Angular Webapplikation und platziere sie neben der index.html Datei.",
+  "introduction": "Generiere die .htaccess Datei für deine Angular Webapplikation und platziere sie neben der index.html Datei. Nenne die Datei in \".htaccess\" um, nachdem Du sie heruntergeladen hast.",
   "alerts": {
     "server requirements": "Damit die generierte .htaccess Datei funktioniert, muss dein Webserver .htaccess Dateien unterstützen. Webserver wie der von github pages unterstützen keine .htaccess Dateien."
   },
@@ -26,6 +28,5 @@
       "header": "Möchtest Du Browser-Caching verhindern?",
       "description": "In manchen Fällen kommt es zu dem Browser Caching Problem: Dateien mit dem gleichen namen werden aus dem Cache geladen, egal ob sich der Inhalt der Datei geändert hat oder nicht. Das passiert oft mit Dateien aus dem assets Ordner."
     }
-  },
-  "downloadNotice": "Nenne die Datei in \".htaccess\" um, nachdem Du sie heruntergeladen hast."
+  }
 }

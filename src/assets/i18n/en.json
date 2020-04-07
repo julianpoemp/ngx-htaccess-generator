@@ -4,9 +4,11 @@
     "yes": "Yes",
     "no": "No",
     "download": "Download",
-    "generate htaccess file": "Generate htaccess file"
+    "generate htaccess file": "Generate htaccess file",
+    "copied to clipboard": "Copied to clipboard",
+    "live preview": "Live preview"
   },
-  "introduction": "Generate the .htaccess file for your Angular web-application and place it next to your app's index.html",
+  "introduction": "Generate the .htaccess file for your Angular web-application and place it next to your app's index.html. Rename the file from \"htaccess.txt\" to \".htaccess\" after the download finished.",
   "alerts": {
     "server requirements": "In order to make the generated .htaccess file work your web-server must support .htaccess files. Web-servers like that one from github pages do not support .htaccess files."
   },
@@ -26,6 +28,5 @@
       "header": "Do you want to prevent browser caching?",
       "description": "In some cases you will face the browser caching issue: files with the same name will be cached by the browser and loaded regardless of whether the file's content was changed or not. That often happens with files from the assets folder."
     }
-  },
-  "downloadNotice": "Rename the file from \"htaccess.txt\" to \".htaccess\" after the download finished."
+  }
 }
