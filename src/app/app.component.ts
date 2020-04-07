@@ -3,6 +3,7 @@ import {TranslocoService} from '@ngneat/transloco';
 import {fadeInExpandOnEnterAnimation, fadeOutCollapseOnLeaveAnimation} from 'angular-animations';
 import {HtaccessGenerator} from './htaccess-generator';
 import {DomSanitizer} from '@angular/platform-browser';
+import {AppInfo} from './app.info';
 
 @Component({
   selector: 'app-root',
@@ -62,11 +63,13 @@ export class AppComponent {
     this.htaccessFile.content = '';
     this.htaccessFile.blobURL = null;
 
-    const generator = new HtaccessGenerator(this.questions);
+    const generator = new HtaccessGenerator(this.questions, AppInfo.version);
     const result = generator.generate();
 
     this.htaccessFile.content = result;
-    this.htaccessFile.blobURL = this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(new File([this.htaccessFile.content], '.htaccess', {type: 'text/plain'})));
+    this.htaccessFile.blobURL = this.domSanitizer.bypassSecurityTrustUrl(
+      URL.createObjectURL(new File([this.htaccessFile.content], '.htaccess', {type: 'text/plain'}))
+    );
   }
 
   addExclusion(input: HTMLInputElement) {

@@ -1,12 +1,13 @@
 export class HtaccessGenerator {
-  private content = `# Generated with ngx-htaccess-generator 1.0.0
+  private content = '';
+
+  constructor(private questions: any, version: string) {
+  this.content = `# Generated with ngx-htaccess-generator v${version}
 # https://julianpoemp.github.io/ngx-htaccess-generator/
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
 `;
-
-  constructor(private questions: any) {
   }
 
   public generate(): string {
