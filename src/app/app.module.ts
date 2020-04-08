@@ -13,7 +13,7 @@ import {fas} from '@fortawesome/free-solid-svg-icons';
 import {far} from '@fortawesome/free-regular-svg-icons';
 import { FormsModule } from '@angular/forms';
 import { NtkmeButtonModule } from '@ctrl/ngx-github-buttons';
-import { TooltipModule } from 'ngx-bootstrap';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [
