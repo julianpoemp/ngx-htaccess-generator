@@ -3,7 +3,7 @@
 The goal of this project is to create a easy-to-use generator that creates .htaccess files for individual Angular applications. You can find the web-application here: https://julianpoemp.github.io/ngx-htaccess-generator/.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/julianpoemp/ngx-htaccess-generator/master/screenshots/ngxHtaccessGeneratorScreenshot.png" alt="screenshot" style="border:1px solid gray;"/>
+<img border="1" src="https://raw.githubusercontent.com/julianpoemp/ngx-htaccess-generator/master/screenshots/ngxHtaccessGeneratorScreenshot.png" alt="screenshot" style="border:1px solid gray;"/>
 </p>
 ## Why?
 
