@@ -1,3 +1,6 @@
+## 1.0.2 (2020-05-22)
+* Browser caching fix is now applied only on files without a hash string to improve loading performance of apps
+
 ## 1.0.1 (2020-04-07)
 
 * fixed htaccess not working on reload bug [#1](https://github.com/julianpoemp/ngx-htaccess-generator/issues/1)
