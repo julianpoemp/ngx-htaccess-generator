@@ -2,7 +2,7 @@ export class HtaccessGenerator {
   private content = '';
 
   constructor(private questions: any, version: string) {
-  this.content = `# Generated with ngx-htaccess-generator v${version}
+    this.content = `# Generated with ngx-htaccess-generator v${version}
 # https://julianpoemp.github.io/ngx-htaccess-generator/
 
 <IfModule mod_rewrite.c>
@@ -55,10 +55,13 @@ export class HtaccessGenerator {
   }
 
   private addBrowserCacheFix() {
-    this.content += `
 
-# Disable browser caching in production. You can add/remove file extension as you wish.
-<FilesMatch "\\.(html|htm|js|json|css)$">
+    let regularExpressions = '';
+    regularExpressions = '';
+
+    this.content += `
+# Disable browser caching for all files that don't get a hash string by Angular.
+<FilesMatch "^(?!.*\\.([0-9a-z]{20})\\.).*$">
   <IfModule mod_headers.c>
     FileETag None
     Header unset ETag
