@@ -55,11 +55,8 @@ export class HtaccessGenerator {
   }
 
   private addBrowserCacheFix() {
-
-    let regularExpressions = '';
-    regularExpressions = '';
-
     this.content += `
+
 # Disable browser caching for all files that don't get a hash string by Angular.
 <FilesMatch "^(?!.*\\.([0-9a-z]{20})\\.).*$">
   <IfModule mod_headers.c>

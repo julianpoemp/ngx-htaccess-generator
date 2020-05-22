@@ -26,7 +26,7 @@
     },
     "browserCaching": {
       "header": "Möchtest Du Browser-Caching verhindern?",
-      "description": "In manchen Fällen kommt es zu dem Browser Caching Problem: Dateien mit dem gleichen namen werden aus dem Cache geladen, egal ob sich der Inhalt der Datei geändert hat oder nicht. Das passiert oft mit Dateien aus dem assets Ordner."
+      "description": "Dateien, deren Namen sich nicht im Vergleich zum letzten Build geändert haben, werden von dem Browser aus dem Cache geladen. Dieses Problem tritt besonders bei Dateien auf, die nicht von Angular generiert und mit einem Hashstring versehen wurden. Mit dieser Option, werden alle Dateien ohne Hashstring neu bei jedem Seitenaufruf neu geladen und damit das Problem behoben."
     }
   }
 }
