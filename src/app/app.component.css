@@ -1,3 +1,10 @@
+main {
+  padding: 20px;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+}
+
 .question {
   margin-top: 10px;
   text-align: left;
@@ -21,17 +28,11 @@
   margin-bottom: 5px;
 }
 
-.preview {
-}
-
 .preview textarea {
   padding: 10px;
   background-color: dimgray;
   color: whitesmoke;
-}
-
-.github-buttons {
-  margin-bottom: 20px;
+  height:100%;
 }
 
 .github-buttons ntkme-github-button {
@@ -42,10 +43,30 @@
 #toolbar-buttons {
   text-align: right;
   background-color: whitesmoke;
-  border:1px solid gray;
-  padding:5px;
+  border: 1px solid gray;
+  padding: 5px;
 }
 
 #toolbar-buttons > * {
   margin-left: 5px;
+}
+
+#toolbar-buttons .header {
+  position: absolute;
+  display: block;
+  margin-top:5px;
+  font-size: 1.2em;
+}
+
+.version {
+  font-size: 0.5em;
+  margin-bottom: 20px;
+  position: absolute;
+  margin-left: 5px;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
 }

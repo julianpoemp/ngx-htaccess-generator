@@ -1,28 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <ul class="navbar-nav mr-auto">
-  </ul>
-
-  <div class="btn-group form-inline my-2 my-lg-0" dropdown>
-    <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle"
-            aria-controls="dropdown-basic">
-      {{selectedLanguage | uppercase}} <span class="caret"></span>
-    </button>
-    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-        role="menu" aria-labelledby="button-basic">
-      <ng-container *ngFor="let lang of availableLanguages">
-        <li role="menuitem" *ngIf="lang !== selectedLanguage" (click)="changeSelectedLanguage(lang)"
-            style="cursor: pointer;">
-          <a class="dropdown-item">{{lang | uppercase}}</a>
-        </li>
-      </ng-container>
-    </ul>
-  </div>
-</nav>
-
-<main style="padding: 20px;">
-  <div>
-    <h1>Angular htaccess generator</h1>
-    <div class="github-buttons">
+  <a class="navbar-brand">Angular htaccess generator <span class="version">{{version}}</span></a>
+  <div class="navbar-nav mr-auto">
+    <div class="github-buttons d-none d-md-block" style="margin-left:25px;">
       <ntkme-github-button
         size="large"
         [count]="true"
@@ -47,142 +26,189 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="btn-group form-inline my-2 my-lg-0" dropdown>
+    <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle"
+            aria-controls="dropdown-basic">
+      {{selectedLanguage | uppercase}} <span class="caret"></span>
+    </button>
+    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+        role="menu" aria-labelledby="button-basic">
+      <ng-container *ngFor="let lang of availableLanguages">
+        <li role="menuitem" *ngIf="lang !== selectedLanguage" (click)="changeSelectedLanguage(lang)"
+            style="cursor: pointer;">
+          <a class="dropdown-item">{{lang | uppercase}}</a>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="d-md-none">
+    <div class="github-buttons" style="margin-bottom: 20px;">
+      <ntkme-github-button
+        size="large"
+        [count]="true"
+        user="julianpoemp"
+        repo="ngx-htaccess-generator"
+      >
+      </ntkme-github-button>
+      <ntkme-github-button
+        size="large"
+        [count]="true"
+        user="julianpoemp"
+        repo="ngx-htaccess-generator"
+        type="fork">
+      </ntkme-github-button>
+      <ntkme-github-button
+        size="large"
+        [count]="true"
+        user="julianpoemp"
+        repo="ngx-htaccess-generator"
+        type="issue">
+      </ntkme-github-button>
+    </div>
+  </div>
+
+  <div class="row" style="flex:auto">
     <div class="col-12 col-xl-6">
-      <p>
-        {{"introduction" | transloco}}
-      </p>
-      <div class="alert alert-info">
-        {{"alerts.server requirements" | transloco}}
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <div class="row">
-            <div class="col-10">
-              <div class="question">
-                {{"questions.baseHref.header" | transloco}}
-              </div>
-            </div>
-            <div class="col-2" style="text-align: right;">
-              <ng-toggle offText="{{'general.no' | transloco}}"
-                         offColor="secondary"
-                         onColor="success"
-                         onText="{{'general.yes' | transloco}}"
-                         [(ngModel)]="questions.baseHref.checked"
-                         (click)="generateHtaccessFile()"
-              >
-              </ng-toggle>
-            </div>
-          </div>
+      <div style="overflow-y:auto;">
+        <p>
+          {{"introduction" | transloco}}
+        </p>
+        <div class="alert alert-info">
+          {{"alerts.server requirements" | transloco}}
         </div>
-        <div class="card-body" [innerHTML]="'questions.baseHref.content' | transloco">
-        </div>
-      </div>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="row">
-            <div class="col-10">
-              <div class="question">
-                {{"questions.httpsRedirection.header" | transloco}}
-              </div>
-            </div>
-            <div class="col-2" style="text-align: right;">
-              <ng-toggle
-                offText="{{'general.no' | transloco}}"
-                offColor="secondary"
-                onColor="success"
-                onText="{{'general.yes' | transloco}}"
-                [(ngModel)]="questions.httpsRedirection.checked"
-                (click)="generateHtaccessFile()"
-              >
-              </ng-toggle>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <div class="row">
-            <div class="col-10">
-              <div class="question">
-                {{"questions.exclusions.header" | transloco}}
-              </div>
-            </div>
-            <div class="col-2" style="text-align: right;">
-              <ng-toggle
-                offText="{{'general.no' | transloco}}"
-                offColor="secondary"
-                onColor="success"
-                onText="{{'general.yes' | transloco}}"
-                [(ngModel)]="questions.exclusions.checked"
-                (click)="generateHtaccessFile()"
-              >
-              </ng-toggle>
-            </div>
-          </div>
-        </div>
-        <div class="card-body" *ngIf="questions.exclusions.checked" [@fadeInExpandOnEnter] [@fadeOutCollapseOnLeave]>
-          <p>
-            {{"questions.exclusions.description" | transloco}}
-          </p>
-          <div style="vertical-align: middle;">
-            <div style="display: block;">
-
-              <ng-container *ngFor="let exlusion of questions.exclusions.list; let i = index;">
-                <div class="exclusion">
-                  {{exlusion}}
-                  <fa-icon [icon]="['fas', 'trash-alt']"
-                           style="display: inline-block;cursor: pointer; vertical-align: middle; color:red; margin-top:-2px;margin-left:2px;"
-                           (click)="removeExclusion(i)"></fa-icon>
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-10">
+                <div class="question">
+                  {{"questions.baseHref.header" | transloco}}
                 </div>
-              </ng-container>
+              </div>
+              <div class="col-2" style="text-align: right;">
+                <ng-toggle offText="{{'general.no' | transloco}}"
+                           offColor="secondary"
+                           onColor="success"
+                           onText="{{'general.yes' | transloco}}"
+                           [(ngModel)]="questions.baseHref.checked"
+                           (click)="generateHtaccessFile()"
+                >
+                </ng-toggle>
+              </div>
             </div>
-            <input type="text" placeholder="directory/" style="display:inline;margin-top:2px;"
-                   (keyup)="questions.exclusions.addEnabled = inputElement.value.length > 0" #inputElement/>
-            <fa-icon [icon]="['fas', 'plus-square']" size="2x"
-                     style="display: inline-block;cursor: pointer; vertical-align: middle; color:cornflowerblue;margin-top:-2px;margin-left:2px;"
-                     class="op"
-                     (click)="addExclusion(inputElement)" [ngClass]="{
+          </div>
+          <div class="card-body" [innerHTML]="'questions.baseHref.content' | transloco">
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-10">
+                <div class="question">
+                  {{"questions.httpsRedirection.header" | transloco}}
+                </div>
+              </div>
+              <div class="col-2" style="text-align: right;">
+                <ng-toggle
+                  offText="{{'general.no' | transloco}}"
+                  offColor="secondary"
+                  onColor="success"
+                  onText="{{'general.yes' | transloco}}"
+                  [(ngModel)]="questions.httpsRedirection.checked"
+                  (click)="generateHtaccessFile()"
+                >
+                </ng-toggle>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-10">
+                <div class="question">
+                  {{"questions.exclusions.header" | transloco}}
+                </div>
+              </div>
+              <div class="col-2" style="text-align: right;">
+                <ng-toggle
+                  offText="{{'general.no' | transloco}}"
+                  offColor="secondary"
+                  onColor="success"
+                  onText="{{'general.yes' | transloco}}"
+                  [(ngModel)]="questions.exclusions.checked"
+                  (click)="generateHtaccessFile()"
+                >
+                </ng-toggle>
+              </div>
+            </div>
+          </div>
+          <div class="card-body" *ngIf="questions.exclusions.checked" [@fadeInExpandOnEnter] [@fadeOutCollapseOnLeave]>
+            <p>
+              {{"questions.exclusions.description" | transloco}}
+            </p>
+            <div style="vertical-align: middle;">
+              <div style="display: block;">
+
+                <ng-container *ngFor="let exlusion of questions.exclusions.list; let i = index;">
+                  <div class="exclusion">
+                    {{exlusion}}
+                    <fa-icon [icon]="['fas', 'trash-alt']"
+                             style="display: inline-block;cursor: pointer; vertical-align: middle; color:red; margin-top:-2px;margin-left:2px;"
+                             (click)="removeExclusion(i)"></fa-icon>
+                  </div>
+                </ng-container>
+              </div>
+              <input type="text" placeholder="directory/" style="display:inline;margin-top:2px;"
+                     (keyup)="questions.exclusions.addEnabled = inputElement.value.length > 0" #inputElement/>
+              <fa-icon [icon]="['fas', 'plus-square']" size="2x"
+                       style="display: inline-block;cursor: pointer; vertical-align: middle; color:cornflowerblue;margin-top:-2px;margin-left:2px;"
+                       class="op"
+                       (click)="addExclusion(inputElement)" [ngClass]="{
                   'op-50': !questions.exclusions.addEnabled
                  }"
-            ></fa-icon>
+              ></fa-icon>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="row">
-            <div class="col-10">
-              <div class="question">
-                {{"questions.browserCaching.header" | transloco}}
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-10">
+                <div class="question">
+                  {{"questions.browserCaching.header" | transloco}}
+                </div>
+              </div>
+              <div class="col-2" style="text-align: right;">
+                <ng-toggle
+                  offText="{{'general.no' | transloco}}"
+                  offColor="secondary"
+                  onColor="success"
+                  onText="{{'general.yes' | transloco}}"
+                  [(ngModel)]="questions.browserCachingDisabled.checked"
+                  (click)="generateHtaccessFile()"
+                >
+                </ng-toggle>
               </div>
             </div>
-            <div class="col-2" style="text-align: right;">
-              <ng-toggle
-                offText="{{'general.no' | transloco}}"
-                offColor="secondary"
-                onColor="success"
-                onText="{{'general.yes' | transloco}}"
-                [(ngModel)]="questions.browserCachingDisabled.checked"
-                (click)="generateHtaccessFile()"
-              >
-              </ng-toggle>
-            </div>
           </div>
-        </div>
-        <div class="card-body">
-          {{"questions.browserCaching.description" | transloco}}
+          <div class="card-body">
+            {{"questions.browserCaching.description" | transloco}}
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-12 col-xl-6">
-      <h4>{{"general.live preview" | transloco}}:</h4>
+    <div class="col-12 col-xl-6" style="flex:auto; flex-direction: column; display: flex;">
       <div id="toolbar-buttons">
-        <button class="btn btn-outline-dark" (click)="copyToClipBoard()" tooltip="{{'general.copied to clipboard' | transloco}}!"
+        <div class="header">{{"general.live preview" | transloco}}:</div>
+        <button class="btn btn-outline-dark" (click)="copyToClipBoard()"
+                tooltip="{{'general.copied to clipboard' | transloco}}!"
                 triggers="" #pop="bs-tooltip">
           <fa-icon [icon]="['far', 'clipboard']"></fa-icon>
         </button>
@@ -191,8 +217,8 @@
           <fa-icon [icon]="['fas', 'file-download']"></fa-icon>
           {{"general.download" | transloco}}</a>
       </div>
-      <div class="preview">
-        <textarea style="width:100%;height:600px;" readonly="readonly">{{htaccessFile.content}}</textarea>
+      <div class="preview" style="flex:auto; flex-direction: column; display: flex; height:600px;">
+        <textarea style="width:100%;" readonly="readonly">{{htaccessFile.content}}</textarea>
       </div>
     </div>
   </div>

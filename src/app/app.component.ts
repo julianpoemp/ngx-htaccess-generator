@@ -44,6 +44,10 @@ export class AppComponent {
 
   @ViewChild('pop', {static: true}) clipboardTooltip: any;
 
+  public get version(): string {
+    return AppInfo.version;
+  }
+
   public get selectedLanguage(): string {
     return this.translocoService.getActiveLang();
   }
