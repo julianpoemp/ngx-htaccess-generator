@@ -11,13 +11,20 @@ import {NgToggleModule} from '@nth-cloud/ng-toggle';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {fas} from '@fortawesome/free-solid-svg-icons';
 import {far} from '@fortawesome/free-regular-svg-icons';
-import { FormsModule } from '@angular/forms';
-import { NtkmeButtonModule } from '@ctrl/ngx-github-buttons';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import {FormsModule} from '@angular/forms';
+import {NtkmeButtonModule} from '@ctrl/ngx-github-buttons';
+import {TooltipModule} from 'ngx-bootstrap/tooltip';
+import {CollapseModule} from 'ngx-bootstrap/collapse';
+import {TroubleShootingComponent} from './pages/trouble-shooting/trouble-shooting.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
+import {GeneratorComponent} from './pages/generator/generator.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TroubleShootingComponent,
+    NavbarComponent,
+    GeneratorComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +33,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     TranslocoRootModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
+    CollapseModule.forRoot(),
     NgToggleModule,
     FormsModule,
     BsDropdownModule.forRoot(),

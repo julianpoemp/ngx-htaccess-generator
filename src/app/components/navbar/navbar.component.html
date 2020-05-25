@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand">Angular htaccess generator <span class="version">{{version}}</span></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02" aria-label="Toggle navigation"
+          [attr.aria-expanded]="!navbarCollapse" (click)="navbarCollapse = !navbarCollapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02" [collapse]="navbarCollapse" [isAnimated]="true">
+    <ul class="navbar-nav mr-auto">
+      <li class="github-buttons d-none d-md-block" style="margin-left:25px;margin-top:5px;">
+        <ntkme-github-button
+          size="large"
+          [count]="true"
+          user="julianpoemp"
+          repo="ngx-htaccess-generator"
+        >
+        </ntkme-github-button>
+        <ntkme-github-button
+          size="large"
+          [count]="true"
+          user="julianpoemp"
+          repo="ngx-htaccess-generator"
+          type="fork">
+        </ntkme-github-button>
+        <ntkme-github-button
+          size="large"
+          [count]="true"
+          user="julianpoemp"
+          repo="ngx-htaccess-generator"
+          type="issue">
+        </ntkme-github-button>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/generator']">Generator</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/trouble-shooting']">Trouble Shooting</a>
+      </li>
+    </ul>
+
+    <div class="btn-group form-inline my-2 my-lg-0" dropdown>
+      <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle"
+              aria-controls="dropdown-basic">
+        {{selectedLanguage | uppercase}} <span class="caret"></span>
+      </button>
+      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+          role="menu" aria-labelledby="button-basic">
+        <ng-container *ngFor="let lang of availableLanguages">
+          <li role="menuitem" *ngIf="lang !== selectedLanguage" (click)="changeSelectedLanguage(lang)"
+              style="cursor: pointer;">
+            <a class="dropdown-item">{{lang | uppercase}}</a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</nav>

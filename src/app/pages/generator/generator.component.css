@@ -1,10 +1,3 @@
-main {
-  padding: 20px;
-  display: flex;
-  flex: auto;
-  flex-direction: column;
-}
-
 .question {
   margin-top: 10px;
   text-align: left;
@@ -33,6 +26,24 @@ main {
   background-color: dimgray;
   color: whitesmoke;
   height:100%;
+}
+
+#toolbar-buttons {
+  text-align: right;
+  background-color: whitesmoke;
+  border: 1px solid gray;
+  padding: 5px;
+}
+
+#toolbar-buttons > * {
+  margin-left: 5px;
+}
+
+#toolbar-buttons .header {
+  position: absolute;
+  display: block;
+  margin-top:5px;
+  font-size: 1.2em;
 }
 
 :host {

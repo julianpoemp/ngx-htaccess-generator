@@ -7,3 +7,8 @@ body {
   display: flex;
   flex-direction: column;;
 }
+
+.github-buttons ntkme-github-button {
+  margin-right: 10px;
+  display: inline-block;
+}

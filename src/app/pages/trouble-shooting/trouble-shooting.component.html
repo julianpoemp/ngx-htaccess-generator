@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Trouble Shooting</h1>
+    </div>
+  </div>
+
+  <p>
+    If you are facing any issues try to answer the following questions. It helps to solve the most problems. If not,
+    post a comment to this gist with the answers to these questions.
+  </p>
+
+  <ul>
+    <li>
+      Does your routing work using ng serve locally? If no, then your routing settings are wrong.
+    </li>
+    <li>
+      Does your web-server support htaccess files? Some web hoster like gitlab-pages does not support htaccess files.
+    </li>
+    <li>
+      Is the .htaccess file placed next to your index.html file?
+    </li>
+    <li>
+      Is your app installed in the root of your domain or in a subfolder?
+    </li>
+    <li>
+      What is your base-href value? If your app is located in a subfolder like https://example.com/awesome/ your
+      base-ref attribute must be /awesome/. If that's not the case, the default value is /.
+    </li>
+  </ul>
+</div>
