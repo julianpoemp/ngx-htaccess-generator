@@ -18,13 +18,15 @@ import {CollapseModule} from 'ngx-bootstrap/collapse';
 import {TroubleShootingComponent} from './pages/trouble-shooting/trouble-shooting.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {GeneratorComponent} from './pages/generator/generator.component';
+import {HelpfulResourcesComponent} from './pages/helpful-resources/helpful-resources.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TroubleShootingComponent,
     NavbarComponent,
-    GeneratorComponent
+    GeneratorComponent,
+    HelpfulResourcesComponent
   ],
   imports: [
     BrowserModule,

@@ -26,7 +26,7 @@
 
 <div class="row" style="flex:auto">
   <div class="col-12 col-xl-6" #wrapper>
-    <div style="overflow-y:auto;" [ngStyle]="{
+    <div id="questions" style="overflow-y:auto;" [ngStyle]="{
     height: wrapper.clientHeight + 'px'
     }">
       <p>
@@ -161,20 +161,22 @@
     </div>
   </div>
   <div class="col-12 col-xl-6" style="flex:auto; flex-direction: column; display: flex;">
-    <div id="toolbar-buttons">
-      <div class="header">{{"general.live preview" | transloco}}:</div>
-      <button class="btn btn-outline-dark" (click)="copyToClipBoard()"
-              tooltip="{{'general.copied to clipboard' | transloco}}!"
-              triggers="" #pop="bs-tooltip">
-        <fa-icon [icon]="['far', 'clipboard']"></fa-icon>
-      </button>
-      <a *ngIf="htaccessFile.blobURL !== null" class="btn btn-success"
-         [href]="htaccessFile.blobURL" download="htaccess">
-        <fa-icon [icon]="['fas', 'file-download']"></fa-icon>
-        {{"general.download" | transloco}}</a>
-    </div>
-    <div class="preview" style="flex:auto; flex-direction: column; display: flex; height:600px;">
-      <textarea style="width:100%;" readonly="readonly">{{htaccessFile.content}}</textarea>
+    <div id="terminal">
+      <div id="toolbar-buttons">
+        <div class="header">{{"general.live preview" | transloco}}:</div>
+        <button class="btn btn-outline-dark" (click)="copyToClipBoard()"
+                tooltip="{{'general.copied to clipboard' | transloco}}!"
+                triggers="" #pop="bs-tooltip">
+          <fa-icon [icon]="['far', 'clipboard']"></fa-icon>
+        </button>
+        <a *ngIf="htaccessFile.blobURL !== null" class="btn btn-success"
+           [href]="htaccessFile.blobURL" download="htaccess">
+          <fa-icon [icon]="['fas', 'file-download']"></fa-icon>
+          {{"general.download" | transloco}}</a>
+      </div>
+      <div class="preview" style="flex:auto; flex-direction: column; display: flex; height:600px;">
+        <textarea style="width:100%;" readonly="readonly">{{htaccessFile.content}}</textarea>
+      </div>
     </div>
   </div>
 </div>
