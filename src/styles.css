@@ -5,7 +5,7 @@ html {
 body {
   height: 100%;
   display: flex;
-  flex-direction: column;;
+  flex-direction: column;
 }
 
 .github-buttons ntkme-github-button {
