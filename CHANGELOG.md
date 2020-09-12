@@ -1,3 +1,6 @@
+## 1.0.3 (2020-05-22)
+* fixed issue with HTTPS redirection. It ignored the paths and redirected just to the index.html.
+
 ## 1.0.2 (2020-05-22)
 * Browser caching fix is now applied only on files without a hash string to improve loading performance of apps
 
