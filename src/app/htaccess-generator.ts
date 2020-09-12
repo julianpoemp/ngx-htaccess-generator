@@ -32,7 +32,7 @@ export class HtaccessGenerator {
     this.content += `
   # Redirection to HTTPS:
   RewriteCond %{HTTPS} !on
-  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L]
   `;
   }
 
