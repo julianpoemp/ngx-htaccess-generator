@@ -12,3 +12,89 @@ body {
   margin-right: 10px;
   display: inline-block;
 }
+
+@media (prefers-color-scheme: dark) {
+  * {
+    color: rgb(214, 216, 218);
+  }
+
+  .gh-btn, .gh-btn * {
+    background-color: gray !important;
+    background: gray !important;
+    color: black !important;
+    border: none;
+  }
+
+  .social-count.gh-large b,
+  .social-count.gh-large i,
+  .social-count.gh-large span {
+    background-color: transparent;
+    color: black;
+  }
+
+  .alert-info {
+    color: #84e2f2;
+    background-color: #348594;
+    border-color: #348594;
+  }
+
+  .card {
+    background-color: black;
+    color: black !important;
+    border: 1px solid gray;
+  }
+
+  .card-header, #toolbar-buttons {
+    background-color: black !important;
+    color: black !important;
+    border:1px solid gray;
+  }
+
+  main {
+    background-color: #1f2325;
+  }
+
+  #questions,
+  #terminal {
+    box-shadow: none !important;
+    border: 1px solid gray !important;
+  }
+
+  input[type="text"] {
+    background: black;
+    border: 1px solid rgb(214, 216, 218);
+    color: rgb(214, 216, 218);
+  }
+
+  input[type="text"]::placeholder {
+    color: rgb(167, 166, 166);
+  }
+
+  .exclusion {
+    background-color: black !important;
+    border: 1px solid lightgray !important;
+  }
+
+  .preview textarea {
+    background-color: #1f2325 !important;
+  }
+
+  .jumbotron.jumbotron-fluid {
+    background-color: #101212;
+  }
+
+
+  #button-basic {
+    color: white;
+    border: 1px solid gray;
+  }
+
+  .btn-group.form-inline ul {
+    background-color: #343a40;
+    border: 1px solid gray;
+  }
+
+  .btn-group.form-inline ul li a {
+    color: white;
+  }
+}

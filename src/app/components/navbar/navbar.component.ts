@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AppInfo} from '../../app.info';
 import {TranslocoService} from '@ngneat/transloco';
 
@@ -11,6 +11,8 @@ export class NavbarComponent implements OnInit {
   public navbarCollapse = true;
 
   availableLanguages = [];
+
+  @Input() darkMode = false;
 
   public get version(): string {
     return AppInfo.version;

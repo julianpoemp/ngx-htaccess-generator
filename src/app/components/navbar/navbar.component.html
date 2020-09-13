@@ -1,4 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg"
+     [ngClass]="{
+     'navbar-light': !darkMode,
+     'navbar-dark': darkMode,
+     'bg-light': !darkMode,
+     'bg-dark': darkMode
+     }">
   <a class="navbar-brand">Angular htaccess generator <span class="version">{{version}}</span></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
           aria-controls="navbarTogglerDemo02" aria-label="Toggle navigation"
