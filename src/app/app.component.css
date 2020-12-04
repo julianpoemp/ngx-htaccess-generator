@@ -32,11 +32,17 @@ main {
   padding: 10px;
   background-color: dimgray;
   color: whitesmoke;
-  height:100%;
+  height: 100%;
 }
 
 :host {
   display: flex;
   flex-direction: column;
   flex: auto;
+}
+
+@media (max-width: 756px) {
+  main {
+    padding: 20px 10px;
+  }
 }
