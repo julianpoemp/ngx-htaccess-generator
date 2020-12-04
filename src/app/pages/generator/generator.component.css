@@ -26,12 +26,14 @@
   background-color: dimgray;
   color: whitesmoke;
   height: 100%;
+  border-radius: 0 0 10px 10px;
 }
 
 #toolbar-buttons {
   text-align: right;
-  background-color: whitesmoke;
+  background-color: transparent;
   border: 1px solid gray;
+  border-radius: 10px 10px 0px 0px;
   padding: 5px;
 }
 
@@ -54,7 +56,7 @@
 
 #questions,
 #terminal {
-  border:1px lightgray;
+  border: 1px lightgray;
   box-shadow: gray 3px 3px 20px;
   padding: 30px;
 }
@@ -64,4 +66,12 @@
   flex: auto;
   flex-direction: column;
   display: flex;
+  border-radius: 10px 10px 10px 10px;
+  background-color: transparent;
+}
+
+@media (max-width: 1199px) {
+  #terminal {
+    margin-top: 50px;
+  }
 }
