@@ -16,6 +16,7 @@ The solution is an .htaccess file: It redirects the requests to your app's index
 - Fix of the browser caching issue
 - HTTP to HTTPS redirection
 - Option to add exclusions of subdirectories, e.g. for blogs, API
+- Dark mode
 
 ## Contribution
 Feel free to contribute!
