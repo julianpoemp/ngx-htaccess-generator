@@ -10,7 +10,7 @@
   },
   "introduction": "Generate the .htaccess file for your Angular web-application and place it next to your app's index.html. Rename the file from \"htaccess.txt\" to \".htaccess\" after the download finished.",
   "alerts": {
-    "server requirements": "In order to make the generated .htaccess file work your web-server must support .htaccess files. Web-servers like that one from github pages do not support .htaccess files."
+    "server requirements": "In order to make the generated .htaccess file work your web-server must support .htaccess files. Web-servers like nginx (e.g. Github Pages) do not support .htaccess files."
   },
   "questions": {
     "baseHref": {
