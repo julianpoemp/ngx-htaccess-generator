@@ -10,7 +10,7 @@
   },
   "introduction": "Generiere die .htaccess Datei für deine Angular Webapplikation und platziere sie neben der index.html Datei. Nenne die Datei in \".htaccess\" um, nachdem Du sie heruntergeladen hast.",
   "alerts": {
-    "server requirements": "Damit die generierte .htaccess Datei funktioniert, muss dein Webserver .htaccess Dateien unterstützen. Webserver wie der von github pages unterstützen keine .htaccess Dateien."
+    "server requirements": "Damit die generierte .htaccess Datei funktioniert, muss dein Webserver .htaccess Dateien unterstützen. Webserver wie nginx (z.B. Github Pages) unterstützen keine .htaccess Dateien."
   },
   "questions": {
     "baseHref": {
@@ -26,7 +26,7 @@
     },
     "browserCaching": {
       "header": "Möchtest Du Browser-Caching verhindern?",
-      "description": "Dateien, deren Namen sich nicht im Vergleich zum letzten Build geändert haben, werden von dem Browser aus dem Cache geladen. Dieses Problem tritt besonders bei Dateien auf, die nicht von Angular generiert und mit einem Hashstring versehen wurden. Mit dieser Option, werden alle Dateien ohne Hashstring neu bei jedem Seitenaufruf neu geladen und damit das Problem behoben."
+      "description": "Dateien, deren Namen sich nicht im Vergleich zum letzten Build geändert haben, werden von dem Browser aus dem Cache geladen. Dieses Problem tritt besonders bei Dateien auf, die nicht von Angular generiert und mit einem Hashstring versehen wurden. Mit dieser Option, werden alle Dateien ohne Hashstring bei jedem Seitenaufruf neu geladen und damit ist das Problem behoben."
     }
   }
 }
