@@ -1,29 +1,3 @@
-<div class="d-md-none">
-  <div class="github-buttons" style="margin-bottom: 20px;">
-    <ntkme-github-button
-      size="large"
-      [count]="true"
-      user="julianpoemp"
-      repo="ngx-htaccess-generator"
-    >
-    </ntkme-github-button>
-    <ntkme-github-button
-      size="large"
-      [count]="true"
-      user="julianpoemp"
-      repo="ngx-htaccess-generator"
-      type="fork">
-    </ntkme-github-button>
-    <ntkme-github-button
-      size="large"
-      [count]="true"
-      user="julianpoemp"
-      repo="ngx-htaccess-generator"
-      type="issue">
-    </ntkme-github-button>
-  </div>
-</div>
-
 <div class="row" style="flex:auto">
   <div class="col-12 col-xl-6" #wrapper>
     <div id="questions" style="overflow-y:auto;" [ngStyle]="{
@@ -39,12 +13,12 @@
       <div class="card">
         <div class="card-header">
           <div class="row">
-            <div class="col-10">
+            <div class="col-12 col-md-10">
               <div class="question">
                 {{"questions.baseHref.header" | transloco}}
               </div>
             </div>
-            <div class="col-2" style="text-align: right;">
+            <div class="col-12 col-md-2" style="text-align: center;">
               <ng-toggle offText="{{'general.no' | transloco}}"
                          offColor="secondary"
                          onColor="success"
@@ -63,12 +37,12 @@
       <div class="card">
         <div class="card-header">
           <div class="row">
-            <div class="col-10">
+            <div class="col-12 col-md-10">
               <div class="question">
                 {{"questions.httpsRedirection.header" | transloco}}
               </div>
             </div>
-            <div class="col-2" style="text-align: right;">
+            <div class="col-12 col-md-2" style="text-align: center;">
               <ng-toggle
                 offText="{{'general.no' | transloco}}"
                 offColor="secondary"
@@ -86,12 +60,12 @@
       <div class="card">
         <div class="card-header">
           <div class="row">
-            <div class="col-10">
+            <div class="col-12 col-md-10">
               <div class="question">
                 {{"questions.exclusions.header" | transloco}}
               </div>
             </div>
-            <div class="col-2" style="text-align: right;">
+            <div class="col-12 col-md-2" style="text-align: center;">
               <ng-toggle
                 offText="{{'general.no' | transloco}}"
                 offColor="secondary"
@@ -136,12 +110,12 @@
       <div class="card">
         <div class="card-header">
           <div class="row">
-            <div class="col-10">
+            <div class="col-12 col-md-10">
               <div class="question">
                 {{"questions.browserCaching.header" | transloco}}
               </div>
             </div>
-            <div class="col-2" style="text-align: right;">
+            <div class="col-12 col-md-2" style="text-align: center;">
               <ng-toggle
                 offText="{{'general.no' | transloco}}"
                 offColor="secondary"

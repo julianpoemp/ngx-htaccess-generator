@@ -1,4 +1,30 @@
 <app-navbar [darkMode]="lastDarkModeActive"></app-navbar>
 <main>
+  <div class="d-md-none">
+    <div class="github-buttons" style="margin-bottom: 20px;text-align: center;" >
+      <ntkme-github-button
+        size="large"
+        [count]="true"
+        user="julianpoemp"
+        repo="ngx-htaccess-generator"
+      >
+      </ntkme-github-button>
+      <ntkme-github-button
+        size="large"
+        [count]="true"
+        user="julianpoemp"
+        repo="ngx-htaccess-generator"
+        type="fork">
+      </ntkme-github-button>
+      <ntkme-github-button
+        size="large"
+        [count]="true"
+        user="julianpoemp"
+        repo="ngx-htaccess-generator"
+        type="issue">
+      </ntkme-github-button>
+    </div>
+  </div>
+
   <router-outlet></router-outlet>
 </main>
