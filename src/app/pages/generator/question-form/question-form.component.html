@@ -5,6 +5,7 @@
     <b>{{'questions.show description' | transloco}}</b>
   </p>
 
+  <h4 style="margin-top:20px;">Main options</h4>
   <div class="card">
     <div class="card-header">
       <div class="row">
@@ -135,4 +136,65 @@
       {{"questions.browserCaching.description" | transloco}}
     </div>
   </div>
-</div>
+
+
+  <!-- ADDITIONAL OPTIONS-->
+
+
+  <h4 style="margin-top: 40px;">Additional options</h4>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-12 col-md-10 my-auto">
+          <div class="question">
+            {{"questions.allowOrigins.header" | transloco}}
+          </div>
+          <fa-icon [icon]="['far', 'question-circle']" class="question-circle"
+                   (click)="questions.allowOrigins.showDescription = !questions.allowOrigins.showDescription"
+                   style=""></fa-icon>
+        </div>
+        <div class="col-12 col-md-2 my-auto" style="text-align: center;">
+          <ng-toggle
+            offText="{{'general.no' | transloco}}"
+            offColor="secondary"
+            onColor="success"
+            onText="{{'general.yes' | transloco}}"
+            [(ngModel)]="questions.allowOrigins.checked"
+            (click)="generateHtaccessFile()"
+          >
+          </ng-toggle>
+        </div>
+      </div>
+    </div>
+    <div class="card-body" *ngIf="questions.allowOrigins.checked || questions.allowOrigins.showDescription" [@fadeInExpandOnEnter]
+         [@fadeOutCollapseOnLeave]>
+      <p *ngIf="questions.allowOrigins.showDescription" [innerHTML]="'questions.allowOrigins.description' | transloco"></p>
+
+      <div style="vertical-align: middle;" *ngIf="questions.allowOrigins.checked">
+        <div style="display: block;">
+
+          <ng-container *ngFor="let domain of questions.allowOrigins.list; let i = index;">
+            <div class="exclusion">
+              {{domain}}
+              <fa-icon [icon]="['fas', 'trash-alt']"
+                       style="display: inline-block;cursor: pointer; vertical-align: middle; color:red; margin-top:-2px;margin-left:2px;"
+                       (click)="removeDomainFromAllowOrigins(i)"></fa-icon>
+            </div>
+          </ng-container>
+        </div>
+        <input type="text" placeholder="example.com" style="display:inline;margin-top:2px;"
+               (keyup)="questions.allowOrigins.addEnabled = inputElement.value.length > 0" #inputElement/>
+        <fa-icon [icon]="['fas', 'plus-square']" size="2x"
+                 style="display: inline-block;cursor: pointer; vertical-align: middle; color:cornflowerblue;margin-top:-2px;margin-left:2px;"
+                 class="op"
+                 (click)="addAllowOriginsDomwain(inputElement)" [ngClass]="{
+                  'op-50': !questions.allowOrigins.addEnabled
+                 }"
+        ></fa-icon>
+      </div>
+    </div>
+  </div>
+
+
+

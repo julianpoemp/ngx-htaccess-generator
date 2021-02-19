@@ -33,6 +33,12 @@ export class QuestionFormComponent implements OnInit {
     browserCachingDisabled: {
       checked: false,
       showDescription: false
+    },
+    allowOrigins: {
+      checked: false,
+      showDescription: false,
+      list: ['*'],
+      addEnabled: false
     }
   };
 
@@ -75,6 +81,25 @@ export class QuestionFormComponent implements OnInit {
 
   removeExclusion(i: number) {
     this.questions.exclusions.list.splice(i, 1);
+    this.generateHtaccessFile();
+  }
+
+  addAllowOriginsDomwain(input: HTMLInputElement) {
+    if (input.value.trim() !== '') {
+      this.questions.allowOrigins.list = this.questions.allowOrigins.list.filter(a => a !== '*');
+      this.questions.allowOrigins.list.push(input.value.trim());
+
+      input.value = '';
+      input.focus();
+      this.generateHtaccessFile();
+    }
+  }
+
+  removeDomainFromAllowOrigins(i: number) {
+    this.questions.allowOrigins.list.splice(i, 1);
+    if(this.questions.allowOrigins.list.length === 0) {
+      this.questions.allowOrigins.list.push('*')
+    }
     this.generateHtaccessFile();
   }
 

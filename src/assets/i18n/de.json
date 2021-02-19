@@ -28,6 +28,10 @@
     "browserCaching": {
       "header": "Möchtest Du Browser-Caching verhindern?",
       "description": "Dateien, deren Namen sich nicht im Vergleich zum letzten Build geändert haben, werden von dem Browser aus dem Cache geladen. Dieses Problem tritt besonders bei Dateien auf, die nicht von Angular generiert und mit einem Hashstring versehen wurden. Mit dieser Option, werden alle Dateien ohne Hashstring bei jedem Seitenaufruf neu geladen und damit ist das Problem behoben."
+    },
+    "allowOrigins": {
+      "header": "Möchtest Du den Zugriff auf deine App von einer anderen Domain erlauben? (Allow-Origins-Header)",
+      "description": "Wenn deine App z.B. als iframe eingebunden werden soll, oder eine öffentliche API besitzt, solltest Du diese Option aktivieren, damit andere Webseiten diese nutzen können.<br/><br/>Standardmäßig werden mit '*' alle domains erlaubt. Falls Du den Zugriff für bestimmte Webseiten erlauben willst, füge sie inkl. Endung hinzu wie z.B. <code>example.com</code>."
     }
   }
 }

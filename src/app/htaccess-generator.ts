@@ -22,9 +22,14 @@ export class HtaccessGenerator {
     this.addDefaults();
     this.closeIfModule();
 
+    if (this.questions.allowOrigins.checked) {
+      this.addAllowOrigins();
+    }
+
     if (this.questions.browserCachingDisabled.checked) {
       this.addBrowserCacheFix();
     }
+
     return this.content;
   }
 
@@ -71,6 +76,26 @@ export class HtaccessGenerator {
     Header set Expires "Mon, 10 Apr 1972 00:00:00 GMT"
   </IfModule>
 </FilesMatch>`;
+  }
+
+  private addAllowOrigins() {
+    const domains = this.questions.allowOrigins.list.join('|');
+    this.content += `
+
+# Set allow Access-Control-Allow-Origin header
+<IfModule mod_headers.c>`;
+    if (this.questions.allowOrigins.list.length > 0 && this.questions.allowOrigins.list[0] !== '*') {
+      this.content += `
+  SetEnvIf Origin "http(s)?://(www\\\\.)?(${domains})$" AccessControlAllowOrigin=$0
+  Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+  Header merge Vary Origin`;
+    } else {
+      this.content += `
+      Header set Access-Control-Allow-Origin "${this.questions.allowOrigins.list.join(',')}"`;
+    }
+
+    this.content += `
+</IfModule>`;
   }
 
   private closeIfModule() {
