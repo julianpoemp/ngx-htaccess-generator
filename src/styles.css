@@ -15,7 +15,8 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  * {
+  p, span, .row, .card-header, .card-body,
+  #toolbar-buttons *{
     color: rgb(214, 216, 218);
   }
 
@@ -67,7 +68,7 @@ body {
     border: 1px solid gray !important;
   }
 
-  #terminal{
+  #terminal {
     background-color: black !important;
   }
 
@@ -106,6 +107,10 @@ body {
 
   .btn-group.form-inline ul li a {
     color: white;
+  }
+
+  .question-circle {
+    color: #348594 !important;
   }
 }
 

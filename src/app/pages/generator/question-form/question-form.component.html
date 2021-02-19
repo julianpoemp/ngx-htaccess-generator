@@ -1,15 +1,22 @@
 <div id="questions" style="overflow-y:auto;" [ngStyle]="{
     height: elementRef.nativeElement.height + 'px'
     }">
+  <p style="text-align: center;">
+    <b>{{'questions.show description' | transloco}}</b>
+  </p>
+
   <div class="card">
     <div class="card-header">
       <div class="row">
-        <div class="col-12 col-md-10">
+        <div class="col-10 col-md-10 my-auto">
           <div class="question">
             {{"questions.baseHref.header" | transloco}}
           </div>
+          <fa-icon [icon]="['far', 'question-circle']" class="question-circle"
+                   (click)="questions.baseHref.showDescription = !questions.baseHref.showDescription"
+                   style=""></fa-icon>
         </div>
-        <div class="col-12 col-md-2" style="text-align: center;">
+        <div class="col-12 col-md-2 my-auto" style="text-align: center;">
           <ng-toggle offText="{{'general.no' | transloco}}"
                      offColor="secondary"
                      onColor="success"
@@ -21,19 +28,20 @@
         </div>
       </div>
     </div>
-    <div class="card-body" [innerHTML]="'questions.baseHref.content' | transloco">
+    <div class="card-body" *ngIf="questions.baseHref.showDescription"
+         [innerHTML]="'questions.baseHref.content' | transloco" [@fadeInExpandOnEnter] [@fadeOutCollapseOnLeave]>
     </div>
   </div>
 
   <div class="card">
     <div class="card-header">
       <div class="row">
-        <div class="col-12 col-md-10">
+        <div class="col-12 col-md-10 my-auto">
           <div class="question">
             {{"questions.httpsRedirection.header" | transloco}}
           </div>
         </div>
-        <div class="col-12 col-md-2" style="text-align: center;">
+        <div class="col-12 col-md-2 my-auto" style="text-align: center;">
           <ng-toggle
             offText="{{'general.no' | transloco}}"
             offColor="secondary"
@@ -51,12 +59,12 @@
   <div class="card">
     <div class="card-header">
       <div class="row">
-        <div class="col-12 col-md-10">
+        <div class="col-12 col-md-10 my-auto">
           <div class="question">
             {{"questions.exclusions.header" | transloco}}
           </div>
         </div>
-        <div class="col-12 col-md-2" style="text-align: center;">
+        <div class="col-12 col-md-2 my-auto" style="text-align: center;">
           <ng-toggle
             offText="{{'general.no' | transloco}}"
             offColor="secondary"
@@ -101,12 +109,15 @@
   <div class="card">
     <div class="card-header">
       <div class="row">
-        <div class="col-12 col-md-10">
+        <div class="col-12 col-md-10 my-auto">
           <div class="question">
             {{"questions.browserCaching.header" | transloco}}
           </div>
+          <fa-icon [icon]="['far', 'question-circle']" class="question-circle"
+                   (click)="questions.browserCachingDisabled.showDescription = !questions.browserCachingDisabled.showDescription"
+                   style=""></fa-icon>
         </div>
-        <div class="col-12 col-md-2" style="text-align: center;">
+        <div class="col-12 col-md-2 my-auto" style="text-align: center;">
           <ng-toggle
             offText="{{'general.no' | transloco}}"
             offColor="secondary"
@@ -119,7 +130,8 @@
         </div>
       </div>
     </div>
-    <div class="card-body">
+    <div class="card-body" *ngIf="questions.browserCachingDisabled.showDescription" [@fadeInExpandOnEnter]
+         [@fadeOutCollapseOnLeave]>
       {{"questions.browserCaching.description" | transloco}}
     </div>
   </div>

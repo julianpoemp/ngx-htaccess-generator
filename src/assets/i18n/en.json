@@ -13,6 +13,7 @@
     "server requirements": "In order to make the generated .htaccess file work your web-server must support .htaccess files. Web-servers like nginx (e.g. Github Pages) do not support .htaccess files."
   },
   "questions": {
+    "show description": "Click on the question mark next to a question in order to get helpful information.",
     "baseHref": {
       "header": "Have you set the base-href attribute correctly?",
       "content": "If your web-application is installed directly on the root on your domain you don't need to change your baseHref attribute. Otherwise set the base-href attribute with the path from the root.<br/><br/>For example, if your app is installed on <code>https://myapp.com/directory/app/</code> your base-href attribute must be <code>/directory/app/</code>. Then you would use this command: <code>ng build --prod --base-href \"/directory/app/\"</code>"

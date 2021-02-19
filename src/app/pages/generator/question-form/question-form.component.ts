@@ -17,18 +17,22 @@ import {fadeInExpandOnEnterAnimation, fadeOutCollapseOnLeaveAnimation} from 'ang
 export class QuestionFormComponent implements OnInit {
   public questions = {
     baseHref: {
-      checked: false
+      checked: false,
+      showDescription: false
     },
     httpsRedirection: {
-      checked: false
+      checked: false,
+      showDescription: false
     },
     exclusions: {
       checked: false,
       addEnabled: false,
+      showDescription: false,
       list: []
     },
     browserCachingDisabled: {
-      checked: false
+      checked: false,
+      showDescription: false
     }
   };
 

@@ -32,3 +32,13 @@
   margin-right: 5px;
   margin-bottom: 5px;
 }
+
+.question-circle {
+  display:inline;
+  cursor: pointer;
+  color: darkblue;
+}
+
+.question{
+  display: inline;
+}
