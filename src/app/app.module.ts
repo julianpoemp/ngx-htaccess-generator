@@ -19,6 +19,8 @@ import {TroubleShootingComponent} from './pages/trouble-shooting/trouble-shootin
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {GeneratorComponent} from './pages/generator/generator.component';
 import {HelpfulResourcesComponent} from './pages/helpful-resources/helpful-resources.component';
+import {PreviewTerminalComponent} from './pages/generator/preview-terminal/preview-terminal.component';
+import {QuestionFormComponent} from './pages/generator/question-form/question-form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {HelpfulResourcesComponent} from './pages/helpful-resources/helpful-resou
     TroubleShootingComponent,
     NavbarComponent,
     GeneratorComponent,
-    HelpfulResourcesComponent
+    HelpfulResourcesComponent,
+    PreviewTerminalComponent,
+    QuestionFormComponent
   ],
   imports: [
     BrowserModule,

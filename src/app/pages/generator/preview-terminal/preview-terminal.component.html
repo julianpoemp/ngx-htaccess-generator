@@ -1,0 +1,17 @@
+<div id="terminal">
+  <div id="toolbar-buttons">
+    <div class="header">{{"general.live preview" | transloco}}:</div>
+    <button class="btn btn-outline-dark" (click)="copyToClipBoard()"
+            tooltip="{{'general.copied to clipboard' | transloco}}!"
+            triggers="" #pop="bs-tooltip">
+      <fa-icon [icon]="['far', 'clipboard']"></fa-icon>
+    </button>
+    <a *ngIf="htaccessFile.blobURL !== null" class="btn btn-success"
+       [href]="htaccessFile.blobURL" download="htaccess">
+      <fa-icon [icon]="['fas', 'file-download']"></fa-icon>
+      {{"general.download" | transloco}}</a>
+  </div>
+  <div class="preview" style="flex:auto; flex-direction: column; display: flex; height:600px;">
+    <textarea style="width:100%;" readonly="readonly">{{htaccessFile.content}}</textarea>
+  </div>
+</div>
