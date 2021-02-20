@@ -10,9 +10,14 @@
   },
   "introduction": "Generiere die .htaccess Datei für deine Angular Webapplikation und platziere sie neben der index.html Datei. Nenne die Datei in \".htaccess\" um, nachdem Du sie heruntergeladen hast.",
   "alerts": {
-    "server requirements": "Damit die generierte .htaccess Datei funktioniert, muss dein Webserver .htaccess Dateien unterstützen. Webserver wie nginx (z.B. Github Pages) unterstützen keine .htaccess Dateien."
+    "server requirements": "Damit die generierte .htaccess Datei funktioniert, muss dein Webserver .htaccess Dateien unterstützen. Webserver wie nginx (z.B. Github Pages) unterstützen keine .htaccess Dateien.",
+    "make a backup": "Du solltest immer eine Sicherung deiner alten .htaccess Datei anfertigen, so dass Du bei Problemen zu der alten Version zurückwechseln kannst."
   },
   "questions": {
+    "main options": {
+      "header": "Grundlegende Optionen"
+    },
+    "show description": "Klicke auf das Fragezeichen rechts neben einer Frage um eine Hilfestellung zu erhalten.",
     "baseHref": {
       "header": "Hast Du das base-href Attribut richtig gesetzt?",
       "content": "Wenn deine WebApp direkt auf der Hauptdomain installiert wird, brauchst Du keine weiteren Schritte unternehmen. Falls deine WebApp in einem Unterverzeichnis installiert werden soll, musst du dein baseHref Attribut ändern.<br/><br/>Wenn deine App zum Beispiel auf <code>https://myapp.com/directory/app/</code> installiert ist, muss dein base-href Attribut <code>/directory/app/</code> lauten. Nutze dann folgenden Befehl: <code>ng build --prod --base-href \"/directory/app/\"</code>"
@@ -27,6 +32,25 @@
     "browserCaching": {
       "header": "Möchtest Du Browser-Caching verhindern?",
       "description": "Dateien, deren Namen sich nicht im Vergleich zum letzten Build geändert haben, werden von dem Browser aus dem Cache geladen. Dieses Problem tritt besonders bei Dateien auf, die nicht von Angular generiert und mit einem Hashstring versehen wurden. Mit dieser Option, werden alle Dateien ohne Hashstring bei jedem Seitenaufruf neu geladen und damit ist das Problem behoben."
+    },
+    "allowOrigins": {
+      "header": "Möchtest Du den Zugriff auf deine App von einer anderen Domain erlauben? (Allow-Origins-Header)",
+      "description": "Wenn deine App z.B. als iframe eingebunden werden soll, oder eine öffentliche API besitzt, solltest Du diese Option aktivieren, damit andere Webseiten diese nutzen können.<br/><br/>Standardmäßig werden mit '*' alle domains erlaubt. Falls Du den Zugriff für bestimmte Webseiten erlauben willst, füge sie inkl. Endung hinzu wie z.B. <code>example.com</code>."
+    },
+    "additional options": {
+      "header": "Zusätzliche Optionen",
+      "description": "Die folgenden Optionen wurden teilweise von dem <a target='_blank' href='https://github.com/h5bp/html5-boilerplate/blob/master/dist/.htaccess'>HTML5-Boilerplate</a> übernommen."
+    },
+    "header options": {
+      "header": "Möchtest Du weitere Header berarbeiten?",
+      "poweredBy": {
+        "label": "Entferne Powered-By header",
+        "description": "Einige Systeme fügen diesen Header hinzu, um Informationen über ihr System zu teilen, z.B. Name des Sytsems, Version etc. Dieser header erleichtert das Auslesen von Schwachstellen für Angreifer."
+      }
+    },
+    "removeServerSignature": {
+      "header": "Möchtest Du die Server-Signatur entfernen?",
+      "description": "Verhindere, dass der Apache-Server eine Fußzeile mit Informationen zu z.B. Fehlermeldungen, Auflistung von Verzeichnissen) anfügt.<br><a target='_blank' href='https://httpd.apache.org/docs/current/mod/core.html#serversignature'>Weitere Infromationen</a>"
     }
   }
 }
