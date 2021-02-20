@@ -14,9 +14,14 @@ body {
   display: inline-block;
 }
 
+span.ng-toggle-handle.btn.btn-sm.btn-light {
+  background-color: lightgray;
+  border: 1px solid lightgray;
+}
+
 @media (prefers-color-scheme: dark) {
   p, span, .row, .card-header, .card-body,
-  #toolbar-buttons *{
+  #toolbar-buttons * {
     color: rgb(214, 216, 218);
   }
 

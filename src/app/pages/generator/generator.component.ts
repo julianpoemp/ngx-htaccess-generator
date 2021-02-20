@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {AppInfo} from '../../app.info';
+import {AppService} from '../../app.service';
 
 @Component({
   selector: 'app-generator',
@@ -18,7 +19,7 @@ export class GeneratorComponent implements OnInit {
     return AppInfo.version;
   }
 
-  constructor() {
+  constructor(public appService: AppService) {
   }
 
   ngOnInit(): void {

@@ -33,11 +33,15 @@
 }
 
 .question-circle {
-  display:inline;
+  display: inline;
   cursor: pointer;
   color: darkblue;
 }
 
-.question{
+.question {
   display: inline;
+}
+
+.description {
+  font-size: 0.98em;
 }

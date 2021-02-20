@@ -1,11 +1,25 @@
 <div id="questions" style="overflow-y:auto;" [ngStyle]="{
     height: elementRef.nativeElement.height + 'px'
     }">
+  <p>
+    {{"introduction" | transloco}}
+  </p>
+  <div class="alert alert-info" [ngClass]="{
+      'alert-dark': appService.lastDarkModeActive
+      }">
+    {{"alerts.server requirements" | transloco}}
+  </div>
+  <div class="alert alert-warning" [ngClass]="{
+      'alert-dark': appService.lastDarkModeActive
+      }">
+    {{"alerts.make a backup" | transloco}}
+  </div>
+
   <p style="text-align: center;">
     <b>{{'questions.show description' | transloco}}</b>
   </p>
 
-  <h4 style="margin-top:20px;">Main options</h4>
+  <h4 style="margin-top:40px;">{{"questions.main options.header" | transloco}}</h4>
   <div class="card">
     <div class="card-header">
       <div class="row">
@@ -21,6 +35,7 @@
           <ng-toggle offText="{{'general.no' | transloco}}"
                      offColor="secondary"
                      onColor="success"
+                     size="sm"
                      onText="{{'general.yes' | transloco}}"
                      [(ngModel)]="questions.baseHref.checked"
                      (click)="generateHtaccessFile()"
@@ -30,7 +45,8 @@
       </div>
     </div>
     <div class="card-body" *ngIf="questions.baseHref.showDescription"
-         [innerHTML]="'questions.baseHref.content' | transloco" [@fadeInExpandOnEnter] [@fadeOutCollapseOnLeave]>
+         [@fadeInExpandOnEnter] [@fadeOutCollapseOnLeave]>
+      <p class="description" [innerHTML]="'questions.baseHref.content' | transloco"></p>
     </div>
   </div>
 
@@ -47,6 +63,7 @@
             offText="{{'general.no' | transloco}}"
             offColor="secondary"
             onColor="success"
+            size="sm"
             onText="{{'general.yes' | transloco}}"
             [(ngModel)]="questions.httpsRedirection.checked"
             (click)="generateHtaccessFile()"
@@ -70,6 +87,7 @@
             offText="{{'general.no' | transloco}}"
             offColor="secondary"
             onColor="success"
+            size="sm"
             onText="{{'general.yes' | transloco}}"
             [(ngModel)]="questions.exclusions.checked"
             (click)="generateHtaccessFile()"
@@ -123,6 +141,7 @@
             offText="{{'general.no' | transloco}}"
             offColor="secondary"
             onColor="success"
+            size="sm"
             onText="{{'general.yes' | transloco}}"
             [(ngModel)]="questions.browserCachingDisabled.checked"
             (click)="generateHtaccessFile()"
@@ -141,7 +160,8 @@
   <!-- ADDITIONAL OPTIONS-->
 
 
-  <h4 style="margin-top: 40px;">Additional options</h4>
+  <h4 style="margin-top: 40px;">{{"questions.additional options.header" | transloco}}</h4>
+  <p [innerHTML]="'questions.additional options.description' | transloco"></p>
 
   <div class="card">
     <div class="card-header">
@@ -159,6 +179,7 @@
             offText="{{'general.no' | transloco}}"
             offColor="secondary"
             onColor="success"
+            size="sm"
             onText="{{'general.yes' | transloco}}"
             [(ngModel)]="questions.allowOrigins.checked"
             (click)="generateHtaccessFile()"
@@ -167,9 +188,11 @@
         </div>
       </div>
     </div>
-    <div class="card-body" *ngIf="questions.allowOrigins.checked || questions.allowOrigins.showDescription" [@fadeInExpandOnEnter]
+    <div class="card-body" *ngIf="questions.allowOrigins.checked || questions.allowOrigins.showDescription"
+         [@fadeInExpandOnEnter]
          [@fadeOutCollapseOnLeave]>
-      <p *ngIf="questions.allowOrigins.showDescription" [innerHTML]="'questions.allowOrigins.description' | transloco"></p>
+      <p *ngIf="questions.allowOrigins.showDescription" class="description"
+         [innerHTML]="'questions.allowOrigins.description' | transloco"></p>
 
       <div style="vertical-align: middle;" *ngIf="questions.allowOrigins.checked">
         <div style="display: block;">
@@ -196,5 +219,91 @@
     </div>
   </div>
 
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-12 col-md-10 my-auto">
+          <div class="question">
+            {{"questions.header options.header" | transloco}}
+          </div>
+        </div>
+        <div class="col-12 col-md-2 my-auto" style="text-align: center;">
+          <ng-toggle
+            offText="{{'general.no' | transloco}}"
+            offColor="secondary"
+            onColor="success"
+            size="sm"
+            onText="{{'general.yes' | transloco}}"
+            [(ngModel)]="questions.headerOptions.checked"
+            (click)="generateHtaccessFile()"
+          >
+          </ng-toggle>
+        </div>
+      </div>
+    </div>
+    <div class="card-body" *ngIf="questions.headerOptions.checked"
+         [@fadeInExpandOnEnter]
+         [@fadeOutCollapseOnLeave]>
 
+      <table class="table table-striped" [ngClass]="{
+      'table-dark': appService.lastDarkModeActive
+      }">
+        <tbody>
+        <ng-container *ngFor="let option of questions.headerOptions.options">
+          <tr>
+            <td>{{"questions.header options." + option.name + ".label" | transloco}}
+              <fa-icon [icon]="['far', 'question-circle']" class="question-circle"
+                       (click)="option.showDescription = !option.showDescription">
+              </fa-icon>
+            </td>
+            <td style="vertical-align: middle; text-align: right;">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" [attr.id]="option.name"
+                       [(ngModel)]="option.enabled" (change)="generateHtaccessFile()">
+                <label class="custom-control-label" [attr.for]="option.name"></label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="padding-left: 30px;font-size:0.95em;" *ngIf="option.showDescription"
+                [@fadeInExpandOnEnter]
+                [@fadeOutCollapseOnLeave]>
+              {{"questions.header options." + option.name + ".description" | transloco}}
+            </td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-12 col-md-10 my-auto">
+          <div class="question">
+            {{"questions.removeServerSignature.header" | transloco}}
+          </div>
+          <fa-icon [icon]="['far', 'question-circle']" class="question-circle"
+                   (click)="questions.removeServerSignature.showDescription = !questions.removeServerSignature.showDescription"
+                   style=""></fa-icon>
+        </div>
+        <div class="col-12 col-md-2 my-auto" style="text-align: center;">
+          <ng-toggle
+            offText="{{'general.no' | transloco}}"
+            offColor="secondary"
+            onColor="success"
+            size="sm"
+            onText="{{'general.yes' | transloco}}"
+            [(ngModel)]="questions.removeServerSignature.checked"
+            (click)="generateHtaccessFile()"
+          >
+          </ng-toggle>
+        </div>
+      </div>
+    </div>
+    <div class="card-body" *ngIf="questions.removeServerSignature.showDescription" [@fadeInExpandOnEnter]
+         [@fadeOutCollapseOnLeave]>
+      <p class="description" [innerHTML]="'questions.removeServerSignature.description' | transloco"></p>
+    </div>
+  </div>

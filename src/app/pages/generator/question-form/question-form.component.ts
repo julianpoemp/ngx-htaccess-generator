@@ -4,6 +4,7 @@ import {AppInfo} from '../../../app.info';
 import {TranslocoService} from '@ngneat/transloco';
 import {DomSanitizer} from '@angular/platform-browser';
 import {fadeInExpandOnEnterAnimation, fadeOutCollapseOnLeaveAnimation} from 'angular-animations';
+import {AppService} from '../../../app.service';
 
 @Component({
   selector: 'app-question-form',
@@ -39,6 +40,30 @@ export class QuestionFormComponent implements OnInit {
       showDescription: false,
       list: ['*'],
       addEnabled: false
+    },
+    headerOptions: {
+      checked: false,
+      showDescription: false,
+      options: [
+        {
+          name: 'poweredBy',
+          showDescription: false,
+          enabled: false,
+          value: {
+            ifModule: {
+              mod_headers: [
+                '# Remove X-Powerered-By header',
+                'Header unset X-Powered-By',
+                'Header always unset X-Powered-By'
+              ]
+            }
+          }
+        }
+      ]
+    },
+    removeServerSignature: {
+      checked: false,
+      showDescription: false
     }
   };
 
@@ -47,7 +72,10 @@ export class QuestionFormComponent implements OnInit {
     content: ''
   };
 
-  constructor(private translocoService: TranslocoService, private domSanitizer: DomSanitizer, public elementRef: ElementRef) {
+  @Input() darkMode = false;
+
+  constructor(private translocoService: TranslocoService, private domSanitizer: DomSanitizer, public elementRef: ElementRef,
+              public appService: AppService) {
   }
 
   ngOnInit(): void {
@@ -97,10 +125,9 @@ export class QuestionFormComponent implements OnInit {
 
   removeDomainFromAllowOrigins(i: number) {
     this.questions.allowOrigins.list.splice(i, 1);
-    if(this.questions.allowOrigins.list.length === 0) {
-      this.questions.allowOrigins.list.push('*')
+    if (this.questions.allowOrigins.list.length === 0) {
+      this.questions.allowOrigins.list.push('*');
     }
     this.generateHtaccessFile();
   }
-
 }
