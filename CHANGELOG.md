@@ -1,3 +1,11 @@
+## 1.0.6 (2021-02-20)
+* improved generation of htaccess file
+* added Allow-Origins-Header rule with support of multiple origins
+* added Rule to remove X-Powered-By header
+* added Rule to remove server signature
+* design improvements: description for each rule is hidden by default. Click on question mark to show it.
+
+
 ## 1.0.3 (2020-05-22)
 * fixed issue with HTTPS redirection. It ignored the paths and redirected just to the index.html.
 
