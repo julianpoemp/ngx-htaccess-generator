@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppService} from '../../app.service';
 
 @Component({
   selector: 'app-helpful-resources',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HelpfulResourcesComponent implements OnInit {
 
-  constructor() { }
+  constructor(public appService: AppService) { }
 
   ngOnInit(): void {
   }

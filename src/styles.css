@@ -21,12 +21,15 @@ span.ng-toggle-handle.btn.btn-sm.btn-light {
 
 @media (prefers-color-scheme: dark) {
   p, span, .row, .card-header, .card-body,
+  ul li,
+  ol li,
+  h1, h2, h3, h4,
+  .jumbotron-fluid,
   #toolbar-buttons * {
     color: rgb(214, 216, 218);
   }
 
   .gh-btn, .gh-btn * {
-    background-color: gray !important;
     background: gray !important;
     color: black !important;
     border: none;
@@ -46,15 +49,19 @@ span.ng-toggle-handle.btn.btn-sm.btn-light {
   }
 
   .card {
-    background-color: black;
+    background-color: #161c22 !important;
     color: black !important;
     border: 1px solid gray;
   }
 
   .card-header, #toolbar-buttons {
-    background-color: black !important;
+    background-color: #161c22 !important;
     color: black !important;
     border: 1px solid gray;
+  }
+
+  .jumbotron {
+    background-color: #3e444a !important;
   }
 
   #toolbar-buttons {
@@ -64,7 +71,7 @@ span.ng-toggle-handle.btn.btn-sm.btn-light {
   }
 
   main {
-    background-color: #1f2325;
+    background-color: #0d1117;
   }
 
   #questions,
@@ -74,7 +81,7 @@ span.ng-toggle-handle.btn.btn-sm.btn-light {
   }
 
   #terminal {
-    background-color: black !important;
+    background-color: #161c22 !important;
   }
 
   input[type="text"] {
@@ -126,4 +133,8 @@ span.ng-toggle-handle.btn.btn-sm.btn-light {
 
 #terminal {
   background-color: black;
+}
+
+h2, h3, h4 {
+  margin-top: 50px;
 }

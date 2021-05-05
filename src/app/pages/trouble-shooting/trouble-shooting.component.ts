@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppService} from '../../app.service';
 
 @Component({
   selector: 'app-trouble-shooting',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TroubleShootingComponent implements OnInit {
 
-  constructor() { }
+  constructor(public appService: AppService) { }
 
   ngOnInit(): void {
   }

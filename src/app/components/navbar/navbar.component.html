@@ -40,13 +40,16 @@
         <a class="nav-link" [routerLink]="['/generator']">Generator</a>
       </li>
       <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/trouble-shooting']">Trouble Shooting</a>
+        <a class="nav-link" [routerLink]="['/further-information']">Further information</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://gist.github.com/julianpoemp/bcf277cb56d2420cc53ec630a04a3566">Discussion</a>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/trouble-shooting']">Trouble Shooting</a>
       </li>
       <li class="nav-item" [routerLinkActive]="['active']">
         <a class="nav-link" [routerLink]="['/helpful-resources']">Helpful Resources</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://gist.github.com/julianpoemp/bcf277cb56d2420cc53ec630a04a3566">Discussion</a>
       </li>
     </ul>
 
