@@ -127,7 +127,8 @@ export class HtaccessGenerator {
       'RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]',
       'RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d',
       'RewriteRule ^.*$ - [NC,L]',
-      'RewriteRule ^(.*) index.html [NC,L]'
+      '# Redirect all non-file routes to index.html',
+      'RewriteRule ^(?!.*\\.).*$ index.html [NC,L]',
     );
   }
 
