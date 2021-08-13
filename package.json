@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod --output-path docs --base-href /ngx-htaccess-generator/"
+    "deploy": "ng build --configuration production --output-path docs --base-href /ngx-htaccess-generator/"
   },
   "private": true,
   "dependencies": {
