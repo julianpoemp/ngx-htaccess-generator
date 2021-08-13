@@ -8,12 +8,17 @@
     "copied to clipboard": "Copied to clipboard",
     "live preview": "Live preview"
   },
-  "introduction": "Generate the .htaccess file for your Angular web-application and place it next to your app's index.html. Rename the file from \"htaccess.txt\" to \".htaccess\" after the download finished.",
+  "introduction": "Generate the .htaccess file for your Angular web-application and place it next to your app's index.html.",
   "alerts": {
-    "server requirements": "In order to make the generated .htaccess file work your web-server must support .htaccess files. Web-servers like nginx (e.g. Github Pages) do not support .htaccess files.",
-    "make a backup": "It's highly recommended to make a backup of an already existing .htaccess file before you overwrite it with a newer one."
+    "server requirements": "In order to make the generated .htaccess file work your web-server must support .htaccess files. Web-servers like Nginx (e.g. Github Pages) do not support .htaccess files.",
+    "make a backup": "It's highly recommended to make a backup of an already existing .htaccess file before you overwrite it with a newer one.",
+    "rename htaccess": "Rename the file to \".htaccess\" after the download finished."
   },
   "questions": {
+    "server support": {
+      "header": "Does your server support .htaccess files?",
+      "content": "Some servers like Apache support .htaccess files while others like nginx (e.g. Github Pages) does not support .htaccess files. If you have access to the apache configuration make sure to set the <code>AllowOverride</code> option."
+    },
     "main options": {
       "header": "Main Options"
     },

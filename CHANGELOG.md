@@ -1,3 +1,11 @@
+## 1.0.8 (2021-08-11)
+### Generator
+* generator: removed redundant redirection with -f. Thanks to stack overflow user Klaassiek. See [post](https://stackoverflow.com/questions/68255822/htaccess-mod-rewrite-difference-between-the-s-and-f-conditions/68744277). 
+
+### Design
+* moved alert about server to a own question at the beginning
+* moved alter about renaming the htaccess file under the download button. Appears after click on download.
+
 ## 1.0.6 (2021-02-20)
 * improved generation of htaccess file
 * added Allow-Origins-Header rule with support of multiple origins
