@@ -123,7 +123,6 @@ export class HtaccessGenerator {
   private addDefaults() {
     this.content.ifModule.mod_rewrite.push(
       '# Redirection of requests to index.html',
-      'RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -s [OR]',
       'RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]',
       'RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d',
       'RewriteRule ^.*$ - [NC,L]',

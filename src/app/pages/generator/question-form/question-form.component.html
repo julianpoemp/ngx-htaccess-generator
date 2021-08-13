@@ -4,11 +4,6 @@
   <p>
     {{"introduction" | transloco}}
   </p>
-  <div class="alert alert-info" [ngClass]="{
-      'alert-dark': appService.lastDarkModeActive
-      }">
-    {{"alerts.server requirements" | transloco}}
-  </div>
   <div class="alert alert-warning" [ngClass]="{
       'alert-dark': appService.lastDarkModeActive
       }">
@@ -20,6 +15,38 @@
   </p>
 
   <h4 style="margin-top:40px;">{{"questions.main options.header" | transloco}}</h4>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-10 col-md-10 my-auto">
+          <div class="question">
+            {{"questions.server support.header" | transloco}}
+          </div>
+          <fa-icon [icon]="['far', 'question-circle']" class="question-circle"
+                   (click)="questions.serverSupport.showDescription = !questions.serverSupport.showDescription"
+                   style=""></fa-icon>
+        </div>
+        <div class="col-12 col-md-2 my-auto" style="text-align: center;">
+          <ng-toggle offText="{{'general.no' | transloco}}"
+                     offColor="secondary"
+                     onColor="success"
+                     size="sm"
+                     onText="{{'general.yes' | transloco}}"
+                     [(ngModel)]="questions.serverSupport.checked"
+                     (click)="generateHtaccessFile()"
+          >
+          </ng-toggle>
+        </div>
+      </div>
+    </div>
+    <div class="card-body" *ngIf="questions.serverSupport.showDescription"
+         [@fadeInExpandOnEnter] [@fadeOutCollapseOnLeave]>
+      <p class="description" [innerHTML]="'questions.server support.content' | transloco"></p>
+    </div>
+  </div>
+
+
   <div class="card">
     <div class="card-header">
       <div class="row">

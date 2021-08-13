@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import * as clipboard from 'clipboard-polyfill';
+import {AppService} from '../../../app.service';
 
 @Component({
   selector: 'app-preview-terminal',
@@ -12,9 +13,11 @@ export class PreviewTerminalComponent implements OnInit {
     content: ''
   };
 
+  public downloadClicked = false;
+
   @ViewChild('pop', {static: true}) clipboardTooltip: any;
 
-  constructor() {
+  constructor(public appService: AppService) {
   }
 
   ngOnInit(): void {

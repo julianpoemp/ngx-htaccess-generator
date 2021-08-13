@@ -17,6 +17,10 @@ import {AppService} from '../../../app.service';
 })
 export class QuestionFormComponent implements OnInit {
   public questions = {
+    serverSupport: {
+      checked: false,
+      showDescription: false
+    },
     baseHref: {
       checked: false,
       showDescription: false
