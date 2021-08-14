@@ -1,6 +1,6 @@
 ## 1.0.8 (2021-08-11)
 ### Generator
-* generator: removed redundant redirection with -f. Thanks to stack overflow user Klaassiek. See [post](https://stackoverflow.com/questions/68255822/htaccess-mod-rewrite-difference-between-the-s-and-f-conditions/68744277). 
+* generator: removed redundant redirection with -s. Thanks to stack overflow user Klaassiek. See [post](https://stackoverflow.com/questions/68255822/htaccess-mod-rewrite-difference-between-the-s-and-f-conditions/68744277). 
 
 ### Design
 * moved alert about server to a own question at the beginning
