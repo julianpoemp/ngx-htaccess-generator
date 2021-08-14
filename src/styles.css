@@ -1,12 +1,9 @@
-html {
-  height: 100%;
-  overflow-x: hidden;
-}
-
-body {
+html,body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  flex:auto;
+  overflow: hidden;
 }
 
 .github-buttons ntkme-github-button {
@@ -17,6 +14,14 @@ body {
 span.ng-toggle-handle.btn.btn-sm.btn-light {
   background-color: lightgray;
   border: 1px solid lightgray;
+}
+
+#generator-left{
+  padding-right:0;
+}
+
+#generator-right{
+  padding-left: 0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -70,7 +75,7 @@ span.ng-toggle-handle.btn.btn-sm.btn-light {
     background-color: transparent !important;
   }
 
-  main {
+  body {
     background-color: #0d1117;
   }
 
@@ -126,15 +131,33 @@ span.ng-toggle-handle.btn.btn-sm.btn-light {
   }
 }
 
-#questions,
-#terminal {
-  border-radius: 10px;
-}
-
 #terminal {
   background-color: black;
 }
 
 h2, h3, h4 {
   margin-top: 50px;
+}
+
+
+@media(max-width: 1200px) {
+  html, body {
+    overflow-y: auto;
+    height: 100%;
+    display: block;
+  }
+  #generator-left{
+    padding-right:15px;
+  }
+
+  #generator-right{
+    padding-left: 15px;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  height: 100%;
 }

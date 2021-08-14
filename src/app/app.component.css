@@ -1,8 +1,12 @@
-main {
-  padding: 60px;
+:host{
   display: flex;
-  flex: auto;
   flex-direction: column;
+  flex: auto;
+  height: 100%;
+}
+
+main {
+  height:500px;
 }
 
 .question {
@@ -35,11 +39,13 @@ main {
   height: 100%;
 }
 
+/*
 :host {
   display: flex;
   flex-direction: column;
   flex: auto;
 }
+ */
 
 @media (max-width: 756px) {
   main {

@@ -1,8 +1,8 @@
-<div class="row" style="flex:auto">
-  <div class="col-12 col-xl-6" #wrapper>
+<div class="row" style="flex:auto; height:100%;">
+  <div class="col-12 col-xl-6 h-100" id="generator-left" #wrapper style="overflow-y:auto;">
     <app-question-form [htaccessFile]="htaccessFile"></app-question-form>
   </div>
-  <div class="col-12 col-xl-6" style="flex:auto; flex-direction: column; display: flex;">
+  <div class="col-12 col-xl-6" id="generator-right" style="flex:auto; flex-direction: column; display: flex;">
     <app-preview-terminal [htaccessFile]="htaccessFile"></app-preview-terminal>
   </div>
 </div>
