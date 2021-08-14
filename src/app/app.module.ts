@@ -21,6 +21,7 @@ import {GeneratorComponent} from './pages/generator/generator.component';
 import {HelpfulResourcesComponent} from './pages/helpful-resources/helpful-resources.component';
 import {PreviewTerminalComponent} from './pages/generator/preview-terminal/preview-terminal.component';
 import {QuestionFormComponent} from './pages/generator/question-form/question-form.component';
+import {NgxCodejarModule} from 'ngx-codejar';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {QuestionFormComponent} from './pages/generator/question-form/question-fo
     FormsModule,
     BsDropdownModule.forRoot(),
     NtkmeButtonModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    NgxCodejarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

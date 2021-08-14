@@ -6,8 +6,8 @@
             triggers="" #pop="bs-tooltip">
       <fa-icon [icon]="['far', 'clipboard']"></fa-icon>
     </button>
-    <a *ngIf="htaccessFile.blobURL !== null" class="btn btn-success"
-       [href]="htaccessFile.blobURL" download="htaccess" (click)="downloadClicked = true">
+    <a *ngIf="_htaccessFile.blobURL !== null" class="btn btn-success"
+       [href]="_htaccessFile.blobURL" download="htaccess" (click)="downloadClicked = true">
       <fa-icon [icon]="['fas', 'file-download']"></fa-icon>
       {{"general.download" | transloco}}</a>
     <div class="alert alert-info text-left" *ngIf="downloadClicked" style="margin-top:20px;" [ngClass]="{
@@ -17,6 +17,6 @@
     </div>
   </div>
   <div class="preview" style="flex:auto; flex-direction: column; display: flex; height:600px;">
-    <textarea style="width:100%;" readonly="readonly">{{htaccessFile.content}}</textarea>
+    <ngx-codejar [(code)]="_htaccessFile.content" [highlightMethod]="highlightMethod" [showLineNumbers]="false"></ngx-codejar>
   </div>
 </div>

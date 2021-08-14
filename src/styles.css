@@ -161,3 +161,13 @@ main {
   flex: auto;
   height: 100%;
 }
+
+ngx-codejar,
+ngx-codejar .codejar-wrap,
+ngx-codejar .ngx-codejar-editor{
+  height:100%;
+}
+
+ngx-codejar .codejar-wrap{
+  display:block;
+}

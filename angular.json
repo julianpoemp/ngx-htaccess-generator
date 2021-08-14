@@ -24,6 +24,7 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/highlight.js/styles/stackoverflow-dark.css",
               "src/styles.css"
             ],
             "scripts": [],
