@@ -1,3 +1,3 @@
 export class AppInfo {
-  public static readonly version = '1.0.8';
+  public static readonly version = '1.1.0';
 }

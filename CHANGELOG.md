@@ -1,3 +1,8 @@
+## 1.1.0 (2021-08-14)
+### Design
+* generator is now a split screen. Each side can scroll independently.
+* textarea was replaced with an syntax-highlighting editor (codeJar)
+
 ## 1.0.8 (2021-08-11)
 ### Generator
 * generator: removed redundant redirection with -s. Thanks to stack overflow user Klaassiek. See [post](https://stackoverflow.com/questions/68255822/htaccess-mod-rewrite-difference-between-the-s-and-f-conditions/68744277). 
