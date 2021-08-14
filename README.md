@@ -1,11 +1,19 @@
+
+<div align="center">
+  <h1> Angular .htaccess generator</h1>
+  <p>
+    The goal of this project is to create an easy-to-use way to create .htaccess files for individual Angular applications. You can find the web-application here: https://julianpoemp.github.io/ngx-htaccess-generator/.
+  </p>
+</div>
+
 <p align="center">
+  Light mode
 <img border="1" src="https://raw.githubusercontent.com/julianpoemp/ngx-htaccess-generator/master/screenshots/screenshot_light.png" alt="screenshot" style="border:1px solid gray;"/>
-<br/>
+<br/><br/>
+  Dark mode
 <img border="1" src="https://raw.githubusercontent.com/julianpoemp/ngx-htaccess-generator/master/screenshots/screenshot_dark.png" alt="screenshot" style="border:1px solid gray;"/>
 </p>
 
-## The goal
-The goal of this project is to create an easy-to-use generator that creates .htaccess files for individual Angular applications. You can find the web-application here: https://julianpoemp.github.io/ngx-htaccess-generator/.
 
 ## Why?
 
