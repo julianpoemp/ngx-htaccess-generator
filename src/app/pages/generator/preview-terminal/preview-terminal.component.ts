@@ -33,7 +33,7 @@ export class PreviewTerminalComponent implements OnInit {
   }
 
   copyToClipBoard() {
-    clipboard.writeText(this.htaccessFile.content);
+    clipboard.writeText(this._htaccessFile.content);
     this.clipboardTooltip.show();
     setTimeout(() => {
       this.clipboardTooltip.hide();
