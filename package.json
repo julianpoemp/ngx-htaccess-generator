@@ -1,6 +1,6 @@
 {
   "name": "ngx-htaccess-generator",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -31,7 +31,7 @@
     "angular-animations": "0.0.10",
     "bootstrap": "^4.5.2",
     "clipboard-polyfill": "^2.8.6",
-    "codejar": "^3.4.0",
+    "codejar": "3.4.0",
     "highlight.js": "^11.2.0",
     "ngx-bootstrap": "^5.6.2",
     "ngx-codejar": "^1.0.2",
@@ -45,7 +45,7 @@
     "@angular/compiler-cli": "~12.2.1",
     "@angular/language-service": "~12.2.1",
     "@types/highlight.js": "^10.1.0",
-    "@types/jasmine": "~3.6.0",
+    "@types/jasmine": "~3.6.0 ",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^13.13.19",
     "codelyzer": "^6.0.0",

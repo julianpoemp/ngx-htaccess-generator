@@ -5,6 +5,7 @@ import {TranslocoService} from '@ngneat/transloco';
 import {DomSanitizer} from '@angular/platform-browser';
 import {fadeInExpandOnEnterAnimation, fadeOutCollapseOnLeaveAnimation} from 'angular-animations';
 import {AppService} from '../../../app.service';
+import {getMimeTypesMappings, getRemovePoweredBy, getRemoveServerSignature} from '../../../../htaccess.sections';
 
 @Component({
   selector: 'app-question-form',
@@ -45,7 +46,7 @@ export class QuestionFormComponent implements OnInit {
       list: ['*'],
       addEnabled: false
     },
-    headerOptions: {
+    securityOptions: {
       checked: false,
       showDescription: false,
       options: [
@@ -55,10 +56,32 @@ export class QuestionFormComponent implements OnInit {
           enabled: false,
           value: {
             ifModule: {
-              mod_headers: [
-                '# Remove X-Powerered-By header',
-                'Header unset X-Powered-By',
-                'Header always unset X-Powered-By'
+              mod_headers: [getRemovePoweredBy()]
+            }
+          }
+        },
+        {
+          name: 'serverSignature',
+          showDescription: false,
+          enabled: false,
+          value: {
+            withoutModule: [getRemoveServerSignature()]
+          }
+        }
+      ]
+    },
+    mimeTypes: {
+      checked: false,
+      showDescription: false,
+      options: [
+        {
+          name: 'mimeTypeMappings',
+          showDescription: false,
+          enabled: false,
+          value: {
+            ifModule: {
+              mod_mime: [
+                getMimeTypesMappings()
               ]
             }
           }

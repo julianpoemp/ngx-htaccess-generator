@@ -1,8 +1,17 @@
+import {
+  getBrowserCachingFix,
+  getHtaccessDefaults,
+  getHtaccessHeader,
+  getHttpsRedirection,
+  getRemoveServerSignature
+} from '../htaccess.sections';
+
 export class HtaccessGenerator {
   private content: HTAccessJSON = {
     ifModule: {
       mod_headers: [],
-      mod_rewrite: []
+      mod_rewrite: [],
+      mod_mime: []
     },
     filesMatch: {
       comment: '',
@@ -38,16 +47,19 @@ export class HtaccessGenerator {
       this.addBrowserCacheFix();
     }
 
-    if (this.questions.headerOptions.checked) {
-      this.addHeaderOptions();
+    if (this.questions.securityOptions.checked) {
+      this.addSecurityOptions();
+    }
+
+    if (this.questions.mimeTypes.checked) {
+      this.addMimeOptions();
     }
 
     if (this.questions.removeServerSignature.checked) {
       this.addRemoveSignature();
     }
 
-    let result = `# Generated with ngx-htaccess-generator v${this.version}
-# https://julianpoemp.github.io/ngx-htaccess-generator/\n\n`;
+    let result = getHtaccessHeader(this.version);
     result += this.convertHtaccessJSONToString(this.content);
 
     return result;
@@ -57,27 +69,15 @@ export class HtaccessGenerator {
     let result = ``;
     const spaces = ' '.repeat(numberOfSpaces);
     if (htaccess.ifModule) {
-      if (htaccess.ifModule.mod_rewrite) {
-        // ifModule mod_rewrite
-        result += `\n${spaces}<IfModule mod_rewrite.c>\n`;
+      for (const attr in htaccess.ifModule) {
+        if (htaccess.ifModule.hasOwnProperty(attr)
+          && htaccess.ifModule[attr] !== undefined
+          && htaccess.ifModule[attr].length > 0) {
+          const modSection = htaccess.ifModule[attr];
 
-        for (const line of htaccess.ifModule.mod_rewrite) {
-          result += `${spaces}  ${line}\n`;
-        }
-
-        result += `${spaces}</IfModule>\n`;
-      }
-
-      if (htaccess.ifModule.mod_headers) {
-        // ifModule mod_headers
-        if (htaccess.ifModule.mod_headers && htaccess.ifModule.mod_headers.length) {
-          result += `\n${spaces}<IfModule mod_headers.c>\n`;
-
-          for (const line of htaccess.ifModule.mod_headers) {
-            result += `${spaces}  ${line}\n`;
-          }
-
-          result += `${spaces}</IfModule>\n`;
+          result += `${spaces}<IfModule ${attr}.c>\n`;
+          result += this.stringifySections(modSection, spaces);
+          result += `\n${spaces}</IfModule>\n\n`;
         }
       }
     }
@@ -85,10 +85,10 @@ export class HtaccessGenerator {
     if (htaccess.filesMatch) {
       // filesMatch
       if (htaccess.filesMatch.content) {
-        result += `\n${spaces}${htaccess.filesMatch.comment}\n`;
+        result += `${spaces}${htaccess.filesMatch.comment}\n`;
         result += `${spaces}<FilesMatch "^(?!.*\\.([0-9a-z]{20})\\.).*$">\n`;
         result += this.convertHtaccessJSONToString(htaccess.filesMatch.content, numberOfSpaces + 2);
-        result += `\n</FilesMatch>\n`;
+        result += `</FilesMatch>\n`;
       }
     }
 
@@ -101,13 +101,15 @@ export class HtaccessGenerator {
     return result;
   }
 
+  private stringifySections(sections, spaces) {
+    return sections.map((section) => {
+      const lines = section.split('\n');
+      return (lines.map(a => `${spaces}  ${a}`).join('\n'));
+    }).join('\n');
+  }
+
   private addHttpsRedirection() {
-    this.content.ifModule.mod_rewrite.push(
-      '# Redirection to HTTPS:',
-      'RewriteCond %{HTTPS} !on',
-      'RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]',
-      ''
-    );
+    this.content.ifModule.mod_rewrite.push(getHttpsRedirection());
   }
 
   private addExclusions() {
@@ -121,14 +123,7 @@ export class HtaccessGenerator {
   }
 
   private addDefaults() {
-    this.content.ifModule.mod_rewrite.push(
-      '# Redirection of requests to index.html',
-      'RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]',
-      'RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d',
-      'RewriteRule ^.*$ - [NC,L]',
-      '# Redirect all non-file routes to index.html',
-      'RewriteRule ^(?!.*\\.).*$ index.html [NC,L]',
-    );
+    this.content.ifModule.mod_rewrite.push(getHtaccessDefaults());
   }
 
   private addRemoveSignature() {
@@ -136,27 +131,17 @@ export class HtaccessGenerator {
       this.content.withoutModule = [];
     }
 
-    this.content.withoutModule.push(
-      '',
-      '# Remove server signature',
-      'ServerSignature Off'
-    );
+    this.content.withoutModule.push(getRemoveServerSignature());
   }
 
   private addBrowserCacheFix() {
     this.content.filesMatch.regex = '^(?!.*\\.([0-9a-z]{20})\\.).*$';
     this.content.filesMatch.comment = '# Disable browser caching for all files that don\'t get a hash string by Angular.';
     this.content.filesMatch.content = {
+      ...this.content.filesMatch.content,
       ifModule: {
         mod_headers: [
-          'FileETag None',
-          'Header unset ETag',
-          'Header unset Pragma',
-          'Header unset Cache-Control',
-          'Header unset Last-Modified',
-          'Header set Pragma "no-cache"',
-          'Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"',
-          'Header set Expires "Mon, 10 Apr 1972 00:00:00 GMT"'
+          getBrowserCachingFix()
         ]
       }
     };
@@ -182,21 +167,44 @@ export class HtaccessGenerator {
     }
   }
 
-  private addHeaderOptions() {
-    const somethingEnabled = this.questions.headerOptions.options.findIndex(a => a.enabled) > -1;
+  private addSecurityOptions() {
+    const somethingEnabled = this.questions.securityOptions.options.findIndex(a => a.enabled) > -1;
 
     if (somethingEnabled) {
       this.content.ifModule.mod_headers.push(
         ''
       );
 
-      for (const option of this.questions.headerOptions.options) {
+      for (const option of this.questions.securityOptions.options) {
         if (option.enabled) {
-          if (option.value.ifModule.mod_headers) {
-            this.content.ifModule.mod_headers = this.content.ifModule.mod_headers.concat(option.value.ifModule.mod_headers);
+          if(option.value.ifModule){
+            if (option.value.ifModule.mod_headers) {
+              this.content.ifModule.mod_headers = this.content.ifModule.mod_headers.concat(option.value.ifModule.mod_headers);
+            }
+            if (option.value.ifModule.mod_rewrite) {
+              this.content.ifModule.mod_rewrite = this.content.ifModule.mod_rewrite.concat(option.value.ifModule.mod_rewrite);
+            }
+          } else if(option.value.withoutModule){
+            this.content.withoutModule = option.value.withoutModule;
           }
-          if (option.value.ifModule.mod_rewrite) {
-            this.content.ifModule.mod_rewrite = this.content.ifModule.mod_rewrite.concat(option.value.ifModule.mod_rewrite);
+        }
+
+      }
+    }
+  }
+
+  private addMimeOptions() {
+    const somethingEnabled = this.questions.mimeTypes.options.findIndex(a => a.enabled) > -1;
+
+    if (somethingEnabled) {
+      this.content.ifModule.mod_mime.push(
+        ''
+      );
+
+      for (const option of this.questions.mimeTypes.options) {
+        if (option.enabled) {
+          if (option.value.ifModule.mod_mime) {
+            this.content.ifModule.mod_mime = this.content.ifModule.mod_mime.concat(option.value.ifModule.mod_mime);
           }
         }
       }
@@ -208,6 +216,7 @@ export interface HTAccessJSON {
   ifModule?: {
     mod_rewrite?: string[];
     mod_headers?: string[];
+    mod_mime?: string[];
   };
   filesMatch?: {
     comment: string;
