@@ -1,3 +1,10 @@
+## 1.2.0 (2021-09-16)
+### Features
+* added mapping of resources to recommended mime types
+
+### Others
+* moved security related options to their own section
+
 ## 1.1.0 (2021-08-14)
 ### Design
 * generator is now a split screen. Each side can scroll independently.

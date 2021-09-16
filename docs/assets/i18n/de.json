@@ -44,18 +44,25 @@
     },
     "additional options": {
       "header": "Zusätzliche Optionen",
-      "description": "Die folgenden Optionen wurden teilweise von dem <a target='_blank' href='https://github.com/h5bp/html5-boilerplate/blob/master/dist/.htaccess'>HTML5-Boilerplate</a> übernommen."
+      "description": "Die folgenden Optionen wurden teilweise von <a target='_blank' href='https://github.com/h5bp/server-configs-apache/blob/main/dist/.htaccess'>Apache Server Configs v5.0.0</a> übernommen."
     },
-    "header options": {
-      "header": "Möchtest Du weitere Header berarbeiten?",
+    "security options": {
+      "header": "Möchtest Du weitere, sicherheitsrelevante Optionen anwenden?",
       "poweredBy": {
-        "label": "Entferne Powered-By header",
+        "label": "Entferne Powered-By Header",
         "description": "Einige Systeme fügen diesen Header hinzu, um Informationen über ihr System zu teilen, z.B. Name des Sytsems, Version etc. Dieser header erleichtert das Auslesen von Schwachstellen für Angreifer."
+      },
+      "serverSignature": {
+        "label": "Entferne Server-Signaturen",
+        "description": "Verhindere, dass der Apache-Server eine Fußzeile mit Informationen zu z.B. Fehlermeldungen, Auflistung von Verzeichnissen) anfügt.<br><a target='_blank' href='https://httpd.apache.org/docs/current/mod/core.html#serversignature'>Weitere Infromationen</a>"
       }
     },
-    "removeServerSignature": {
-      "header": "Möchtest Du die Server-Signatur entfernen?",
-      "description": "Verhindere, dass der Apache-Server eine Fußzeile mit Informationen zu z.B. Fehlermeldungen, Auflistung von Verzeichnissen) anfügt.<br><a target='_blank' href='https://httpd.apache.org/docs/current/mod/core.html#serversignature'>Weitere Infromationen</a>"
+    "mimetypes options": {
+      "header": "Möchtest Du Optionen bzgl. Mime-Types anwenden?",
+      "mimeTypeMappings": {
+        "label": "Versehe Antworten auf Ressourcen mit empfohlenen Content-Type",
+        "description": "Jede HTTP-Anfrage auf Dateien dieses Servers erhält automatisch den empfohlenen \"Content-Type\"-Header."
+      }
     }
   }
 }
