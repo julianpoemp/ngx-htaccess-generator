@@ -27,7 +27,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@ngneat/transloco": "^2.20.1",
-    "@nth-cloud/ng-toggle": "^6.0.0",
+    "@nth-cloud/ng-toggle": "^8.0.2",
     "angular-animations": "0.0.10",
     "bootstrap": "^4.5.2",
     "clipboard-polyfill": "^2.8.6",
