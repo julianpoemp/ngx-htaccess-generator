@@ -40,6 +40,10 @@ span.ng-toggle-handle.btn.btn-sm.btn-light {
     border: none;
   }
 
+  .ngx-codejar-editor {
+    background-color: #323232 !important;
+  }
+
   .social-count.gh-large b,
   .social-count.gh-large i,
   .social-count.gh-large span {
@@ -72,7 +76,7 @@ span.ng-toggle-handle.btn.btn-sm.btn-light {
   #toolbar-buttons {
     border: none !important;
     border-bottom: 1px solid gray;
-    background-color: transparent !important;
+    background-color: #242424 !important;
   }
 
   body {
@@ -168,6 +172,12 @@ ngx-codejar .ngx-codejar-editor{
   height:100%;
 }
 
+
 ngx-codejar .codejar-wrap{
   display:block;
+}
+
+.alert-dark{
+  color: lightblue;
+  background: transparent;
 }
