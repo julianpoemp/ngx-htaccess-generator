@@ -17,7 +17,7 @@
   "questions": {
     "server support": {
       "header": "Does your server support .htaccess files?",
-      "content": "Some servers like Apache support .htaccess files while others like nginx (e.g. Github Pages) does not support .htaccess files. If you have access to the apache configuration make sure to set the <code>AllowOverride</code> option."
+      "content": "Some servers like Apache support .htaccess files while others like nginx (e.g. Github Pages) does not support .htaccess files. If you have access to the apache configuration make sure to set the <code>AllowOverride</code> option.<br/><br/>If you have to use a web-server that doesn't support .htaccess files and you want to solve the reloading issue, you can change the Location Strategy to the <a href='https://angular.io/guide/router#locationstrategy-and-browser-url-styles' target='_blank'>Hash-Location-Strategy</a>."
     },
     "main options": {
       "header": "Main Options"
