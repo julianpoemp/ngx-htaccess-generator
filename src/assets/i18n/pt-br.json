@@ -1,0 +1,68 @@
+{
+  "textDirection": "left",
+  "general": {
+    "yes": "Sim",
+    "no": "Não",
+    "download": "Baixar",
+    "generate htaccess file": "Gerar arquivo htaccess",
+    "copied to clipboard": "Copiado para área de transferência",
+    "live preview": "Visualização"
+  },
+  "introduction": "Gere o arquivo .htaccess para seu Website Angular e coloque-o no mesmo diretório do index.html.",
+  "alerts": {
+    "server requirements": "In order to make the generated .htaccess file work your web-server must support .htaccess files. Web-servers like Nginx (e.g. Github Pages) do not support .htaccess files.",
+    "make a backup": "É altamente recomendável fazer um backup de um arquivo .htaccess já existente antes de substituí-lo por um mais recente.",
+    "rename htaccess": "Renomeio o arquivo para \".htaccess\" depois de finalizado o download."
+  },
+  "questions": {
+    "server support": {
+      "header": "Seu servidor não suporta arquivos .htaccess?",
+      "content": "Alguns servidores como o Apache suportam arquivos .htaccess enquanto outros como o nginx (por exemplo Github Pages) não suportam arquivos .htaccess. Se você tiver acesso à configuração do apache, certifique-se de definir a opção <code>AllowOverride</code>..<br/><br/>Se você tiver que usar um servidor web que não suporta arquivos .htaccess e quiser resolver o problema de recarregamento, você pode alterar a Location Strategy para a <a href='https://angular.io/guide/router#locationstrategy-and-browser-url-styles' target='_blank'>Hash-Location-Strategy</a>."
+    },
+    "main options": {
+      "header": "Opções Principais"
+    },
+    "show description": "Clique no ponto de interrogação ao lado de uma pergunta para obter informações úteis.",
+    "baseHref": {
+      "header": "Você definiu o atributo base-href corretamente?",
+      "content": "Se o seu website estiver instalado diretamente na raiz do seu domínio, você não precisará alterar seu atributo baseHref. Caso contrário, defina o atributo base-href com o caminho da raiz.<br/><br/>Por exemplo, se seu website estiver instalado em <code>https://myapp.com/directory/app/</code> O base-href precisa ser <code>/directory/app/</code>. Para isso, utilize o comando a seguir: <code>ng build --prod --base-href \"/directory/app/\"</code>"
+    },
+    "httpsRedirection": {
+      "header": "Você precisa de um redirecionamento de HTTP para HTTPS?"
+    },
+    "exclusions": {
+      "header": "Você gostaria de ignorar subdiretórios?",
+      "description": "Adicione os diretórios:"
+    },
+    "browserCaching": {
+      "header": "Deseja impedir o cache do navegador?",
+      "description": "Em alguns casos, você enfrentará o problema de cache do navegador: arquivos com o mesmo nome serão armazenados em cache pelo navegador e carregados independentemente de o conteúdo do arquivo ter sido alterado ou não. Com esta opção os navegadores vão carregar todos os arquivos que não foram gerados pelo Angular, do servidor web."
+    },
+    "additional options": {
+      "header": "Opções Adicionais",
+      "description": "As opções a seguir foram parcialmente inspiradas no <a target='_blank' href='https://github.com/h5bp/server-configs-apache/blob/main/dist/.htaccess'>Apache Server Configs v5.0.0</a>."
+    },
+    "allowOrigins": {
+      "header": "Deseja conceder acesso ao seu website para outro site? (Allow-Origins-Header)",
+      "description": "Essa opção é necessária se você deseja permitir que seu website seja incorporado em um iframe ou se deseja oferecer uma API pública. Esse cabeçalho é necessário para permitir o acesso ao seu website de outro domínio."
+    },
+    "security options": {
+      "header": "Deseja definir mais opções de segurança?",
+      "poweredBy": {
+        "label": "Remover o cabeçalho Powered-By",
+        "description": "Alguns frameworks adicionam este cabeçalho para fornecer informações sobre o framework criado nesta página, ex. nome do framework, versão etc. Este cabeçalho torna mais fácil para o invasor encontrar problemas de segurança."
+      },
+      "serverSignature": {
+        "label": "Remover assinatura do servidor",
+        "description": "Impedir que o servidor apache adicione um rodapé com informações como mensagens de erro, listagem de diretórios ou algo parecido.<br><a target='_blank' href='https://httpd.apache.org/docs/current/mod/core.html#serversignature'>Mais informações</a>"
+      }
+    },
+    "mimetypes options": {
+      "header": "Deseja definir as opções relacionadas ao Mime-Type?",
+      "mimeTypeMappings": {
+        "label": "Aplicar Content-Type recomendadas para HTTP-responses",
+        "description": "Isso substitui o cabeçalho \"Content-Type\" pelo tipo mime recomendado para cada resposta HTTP deste servidor."
+      }
+    }
+  }
+}
