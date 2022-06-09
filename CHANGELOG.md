@@ -1,3 +1,12 @@
+## 1.2.1 (2022-06-09)
+### Enhancements
+* updated Angular to 14.0.1
+* updated bootstrap to 5.1.3
+
+### Translations
+* added translation for Brasilian Portuguese (pt-br) thanks to [regivaldo](https://github.com/regivaldo)
+
+
 ## 1.2.0 (2021-09-16)
 ### Features
 * added mapping of resources to recommended mime types
