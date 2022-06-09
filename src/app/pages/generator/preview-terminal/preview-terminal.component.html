@@ -10,10 +10,10 @@
        [href]="_htaccessFile.blobURL" download="htaccess" (click)="downloadClicked = true">
       <fa-icon [icon]="['fas', 'file-download']"></fa-icon>
       {{"general.download" | transloco}}</a>
-    <div class="alert alert-info text-left" *ngIf="downloadClicked" style="margin-top:20px;" [ngClass]="{
-      'alert-dark': appService.lastDarkModeActive
-      }">
-      {{"alerts.rename htaccess" | transloco}}
+    <div style="margin-top:20px;" *ngIf="downloadClicked">
+      <alert type="dark"  style="text-align: center;" [type]="(appService.lastDarkModeActive) ? 'dark': 'info'">
+        {{"alerts.rename htaccess" | transloco}}
+      </alert>
     </div>
   </div>
   <div class="preview" style="flex:auto; flex-direction: column; display: flex; height:600px;">

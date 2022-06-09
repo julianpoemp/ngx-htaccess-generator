@@ -22,6 +22,7 @@ import {HelpfulResourcesComponent} from './pages/helpful-resources/helpful-resou
 import {PreviewTerminalComponent} from './pages/generator/preview-terminal/preview-terminal.component';
 import {QuestionFormComponent} from './pages/generator/question-form/question-form.component';
 import {NgxCodejarModule} from 'ngx-codejar';
+import {AlertModule} from 'ngx-bootstrap/alert';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {NgxCodejarModule} from 'ngx-codejar';
     BsDropdownModule.forRoot(),
     NtkmeButtonModule,
     TooltipModule.forRoot(),
-    NgxCodejarModule
+    NgxCodejarModule,
+    AlertModule
   ],
   providers: [],
   bootstrap: [AppComponent]
