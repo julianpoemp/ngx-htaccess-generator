@@ -113,6 +113,9 @@
           }
         }
       }
-    }},
-  "defaultProject": "ngx-htaccess-generator"
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
 }
