@@ -29,6 +29,22 @@ The solution is an .htaccess file: It redirects the requests to your app's index
 - Dark mode
 - Further more
 
+## Contributors
+
+Hall of fame for contributors:
+
+### Translators
+
+<table>
+<tbody>
+  <tr>
+    <td>Brasilian Portuguese</td>
+    <td>pt-br</td>
+    <td><a href="https://github.com/regivaldo">regivaldo</a></td>
+  </tr>
+</tbody>
+</table>
+
 ## Contribution
 Feel free to contribute!
 
