@@ -1,3 +1,10 @@
+## 1.2.2 (2022-07-15)
+### Enhancements
+* added option to redirect to www
+
+### Others
+* updated Angular and other dependencies
+
 ## 1.2.1 (2022-06-09)
 ### Enhancements
 * updated Angular to 14.0.1
