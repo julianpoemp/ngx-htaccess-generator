@@ -77,6 +77,66 @@
     </div>
   </div>
 
+
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-12 col-md-10 my-auto">
+          <div class="question">
+            {{"questions.redirection.header" | transloco}}
+          </div>
+        </div>
+        <div class="col-12 col-md-2 my-auto" style="text-align: center;">
+          <ng-toggle
+            offText="{{'general.no' | transloco}}"
+            offColor="secondary"
+            onColor="success"
+            size="sm"
+            onText="{{'general.yes' | transloco}}"
+            [(ngModel)]="questions.redirection.checked"
+            (click)="generateHtaccessFile()"
+          >
+          </ng-toggle>
+        </div>
+      </div>
+    </div>
+    <div class="card-body" *ngIf="questions.redirection.checked"
+         [@fadeInExpandOnEnter]
+         [@fadeOutCollapseOnLeave]>
+
+      <table class="table table-striped" [ngClass]="{
+      'table-dark': appService.lastDarkModeActive
+      }">
+        <tbody>
+        <ng-container *ngFor="let option of questions.redirection.options">
+          <tr>
+            <td>{{"questions.redirection.options." + option.name + ".label" | transloco}}
+              <fa-icon [icon]="['far', 'question-circle']" class="question-circle" *ngIf="option.hasDescription"
+                       (click)="option.showDescription = !option.showDescription">
+              </fa-icon>
+            </td>
+            <td style="vertical-align: middle; text-align: right;">
+              <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" [attr.id]="option.name" style="position:absolute;"
+                       [(ngModel)]="option.enabled" (change)="generateHtaccessFile()">
+                <label class="form-check-label" [attr.for]="option.name"></label>
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="option.hasDescription">
+            <td colspan="2" style="padding-left: 30px;font-size:0.95em;" *ngIf="option.showDescription"
+                [@fadeInExpandOnEnter]
+                [@fadeOutCollapseOnLeave]>
+              {{"questions.redirection.options." + option.name + ".description" | transloco}}
+            </td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!--
   <div class="card">
     <div class="card-header">
       <div class="row">
@@ -100,6 +160,7 @@
       </div>
     </div>
   </div>
+  -->
 
   <div class="card">
     <div class="card-header">
@@ -284,10 +345,10 @@
               </fa-icon>
             </td>
             <td style="vertical-align: middle; text-align: right;">
-              <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" [attr.id]="option.name"
+              <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" [attr.id]="option.name"
                        [(ngModel)]="option.enabled" (change)="generateHtaccessFile()">
-                <label class="custom-control-label" [attr.for]="option.name"></label>
+                <label class="form-check-label" [attr.for]="option.name"></label>
               </div>
             </td>
           </tr>
@@ -342,10 +403,10 @@
               </fa-icon>
             </td>
             <td style="vertical-align: middle; text-align: right;">
-              <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" [attr.id]="option.name"
+              <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" [attr.id]="option.name"
                        [(ngModel)]="option.enabled" (change)="generateHtaccessFile()">
-                <label class="custom-control-label" [attr.for]="option.name"></label>
+                <label class="form-check-label" [attr.for]="option.name"></label>
               </div>
             </td>
           </tr>

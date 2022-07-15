@@ -26,9 +26,23 @@ export class QuestionFormComponent implements OnInit {
       checked: false,
       showDescription: false
     },
-    httpsRedirection: {
+    redirection: {
       checked: false,
-      showDescription: false
+      showDescription: false,
+      options: [
+        {
+          name: 'httpsRedirection',
+          hasDescription: false,
+          showDescription: false,
+          enabled: false
+        },
+        {
+          name: 'www',
+          hasDescription: true,
+          showDescription: false,
+          enabled: false
+        }
+      ]
     },
     exclusions: {
       checked: false,
@@ -110,9 +124,11 @@ export class QuestionFormComponent implements OnInit {
   }
 
   generateHtaccessFile() {
+    console.log("Generate HTACCESS");
     const generator = new HtaccessGenerator(this.questions, AppInfo.version);
 
     this.htaccessFile.content = generator.generate();
+    console.log(this.htaccessFile.content);
     this.htaccessFile.blobURL = this.domSanitizer.bypassSecurityTrustUrl(
       URL.createObjectURL(new File([this.htaccessFile.content], '.htaccess', {type: 'text/plain'}))
     );

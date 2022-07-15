@@ -1,10 +1,4 @@
-import {
-  getBrowserCachingFix,
-  getHtaccessDefaults,
-  getHtaccessHeader,
-  getHttpsRedirection,
-  getRemoveServerSignature
-} from '../htaccess.sections';
+import {getBrowserCachingFix, getHtaccessDefaults, getHtaccessHeader, getRedirection, getRemoveServerSignature} from '../htaccess.sections';
 
 export class HtaccessGenerator {
   private content: HTAccessJSON = {
@@ -25,13 +19,13 @@ export class HtaccessGenerator {
   public generate(): string {
     // add default redirection to index.html
     this.content.ifModule.mod_rewrite.push(
-      'RewriteEngine On',
-      ''
+      'RewriteEngine On'
     );
 
-    if (this.questions.httpsRedirection.checked) {
-      this.addHttpsRedirection();
-    }
+    this.setRedirection({
+      httpsRedirection: this.questions.redirection.options.find(a => a.name === 'httpsRedirection')?.enabled ?? false,
+      www: this.questions.redirection.options.find(a => a.name === 'www')?.enabled ?? false
+    });
 
     if (this.questions.exclusions.checked && this.questions.exclusions.list.length > 0) {
       this.addExclusions();
@@ -108,8 +102,11 @@ export class HtaccessGenerator {
     }).join('\n');
   }
 
-  private addHttpsRedirection() {
-    this.content.ifModule.mod_rewrite.push(getHttpsRedirection());
+  private setRedirection(options: {
+    httpsRedirection: boolean;
+    www: boolean;
+  }) {
+    this.content.ifModule.mod_rewrite.push(getRedirection(options));
   }
 
   private addExclusions() {
@@ -177,14 +174,14 @@ export class HtaccessGenerator {
 
       for (const option of this.questions.securityOptions.options) {
         if (option.enabled) {
-          if(option.value.ifModule){
+          if (option.value.ifModule) {
             if (option.value.ifModule.mod_headers) {
               this.content.ifModule.mod_headers = this.content.ifModule.mod_headers.concat(option.value.ifModule.mod_headers);
             }
             if (option.value.ifModule.mod_rewrite) {
               this.content.ifModule.mod_rewrite = this.content.ifModule.mod_rewrite.concat(option.value.ifModule.mod_rewrite);
             }
-          } else if(option.value.withoutModule){
+          } else if (option.value.withoutModule) {
             this.content.withoutModule = option.value.withoutModule;
           }
         }

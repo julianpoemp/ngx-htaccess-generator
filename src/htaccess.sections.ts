@@ -19,10 +19,32 @@ RewriteRule ^.*$ - [NC,L]
 RewriteRule ^(?!.*\\.).*$ index.html [NC,L]`;
 }
 
-export function getHttpsRedirection() {
-  return `# Redirection to HTTPS:
-RewriteCond %{HTTPS} !on
-RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+export function getRedirection(options: {
+  httpsRedirection: boolean;
+  www: boolean;
+}) {
+  let header = options.httpsRedirection ? 'HTTPS' : '';
+  header += options.httpsRedirection && options.www ? ' & ' : '';
+  header += options.www ? 'www' : '';
+
+  let condition = '';
+  let value = '';
+
+  if (options.www) {
+    const http = options.httpsRedirection ? 'https' : 'http';
+    condition = 'RewriteCond %{HTTP_HOST} !^www\\. [NC]';
+    value = `RewriteRule ^(.*)$ ${http}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]`;
+  } else if (options.httpsRedirection) {
+    condition = 'RewriteCond %{HTTPS} !on';
+    value = 'RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]';
+  } else {
+    return '';
+  }
+
+  return `
+# Redirection to ${header}:
+${condition}
+${value}
 `;
 }
 
@@ -126,7 +148,7 @@ export function getRemoveServerSignature() {
 ServerSignature Off`;
 }
 
-export function getRemovePoweredBy(){
+export function getRemovePoweredBy() {
   return `# Remove X-Powerered-By header
 Header unset X-Powered-By
 Header always unset X-Powered-By`;
