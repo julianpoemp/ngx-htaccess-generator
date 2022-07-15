@@ -1,9 +1,14 @@
 <div class="container">
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4">Helpful Resources</h1>
+  <div class="p-3 mt-4 mb-4 rounded-3"
+       [ngClass]="{
+     'bg-light': !appService.lastDarkModeActive,
+     'bg-dark': appService.lastDarkModeActive
+     }">
+    <div class="container-fluid py-5">
+      <h1 class="display-5">Helpful Resources</h1>
     </div>
   </div>
+
   <table class="table table-striped" [ngClass]="{
       'table-dark': appService.lastDarkModeActive
       }">

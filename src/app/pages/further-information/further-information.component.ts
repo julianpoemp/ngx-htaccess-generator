@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AppService} from '../../app.service';
 
 @Component({
   selector: 'app-further-information',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FurtherInformationComponent implements OnInit {
 
-  constructor() { }
+  constructor(public appService: AppService) {
+  }
 
   ngOnInit(): void {
   }

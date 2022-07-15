@@ -23,6 +23,7 @@ import {PreviewTerminalComponent} from './pages/generator/preview-terminal/previ
 import {QuestionFormComponent} from './pages/generator/question-form/question-form.component';
 import {NgxCodejarModule} from 'ngx-codejar';
 import {AlertModule} from 'ngx-bootstrap/alert';
+import {FurtherInformationComponent} from './pages/further-information/further-information.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {AlertModule} from 'ngx-bootstrap/alert';
     GeneratorComponent,
     HelpfulResourcesComponent,
     PreviewTerminalComponent,
-    QuestionFormComponent
+    QuestionFormComponent,
+    FurtherInformationComponent
   ],
   imports: [
     BrowserModule,
