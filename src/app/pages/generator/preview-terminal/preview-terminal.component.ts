@@ -14,8 +14,6 @@ export class PreviewTerminalComponent implements OnInit {
     blobURL: string,
     content: string
   }) {
-    console.log(`SET value`);
-    console.log(value);
     this._htaccessFile = value;
   }
 

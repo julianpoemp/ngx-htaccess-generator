@@ -124,11 +124,9 @@ export class QuestionFormComponent implements OnInit {
   }
 
   generateHtaccessFile() {
-    console.log("Generate HTACCESS");
     const generator = new HtaccessGenerator(this.questions, AppInfo.version);
 
     this.htaccessFile.content = generator.generate();
-    console.log(this.htaccessFile.content);
     this.htaccessFile.blobURL = this.domSanitizer.bypassSecurityTrustUrl(
       URL.createObjectURL(new File([this.htaccessFile.content], '.htaccess', {type: 'text/plain'}))
     );
