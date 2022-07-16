@@ -34,7 +34,7 @@
     "codejar": "^3.6.0",
     "highlight.js": "^11.6.0",
     "ngx-bootstrap": "^8.0.0",
-    "ngx-codejar": "^5.1.0",
+    "ngx-codejar": "^5.1.2",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
