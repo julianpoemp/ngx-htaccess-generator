@@ -1,3 +1,5 @@
+import pkg from '../../package.json';
+
 export class AppInfo {
-  public static readonly version = '1.2.2';
+  public static readonly version = pkg.version;
 }
