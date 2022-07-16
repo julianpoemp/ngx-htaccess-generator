@@ -1,6 +1,10 @@
+## 1.2.4 (2022-07-16)
+### Bugfixes
+* fixed editor not updating when action triggered
+
 ## 1.2.3 (2022-07-16)
 ### Bugfixes
-* fixes issue with invisible code in editor
+* fixed issue with invisible code in editor
 
 ## 1.2.2 (2022-07-15)
 ### Enhancements
