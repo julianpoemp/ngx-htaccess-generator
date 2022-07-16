@@ -27,8 +27,17 @@
       "header": "Have you set the base-href attribute correctly?",
       "content": "If your web-application is installed directly on the root on your domain you don't need to change your baseHref attribute. Otherwise set the base-href attribute with the path from the root.<br/><br/>For example, if your app is installed on <code>https://myapp.com/directory/app/</code> your base-href attribute must be <code>/directory/app/</code>. Then you would use this command: <code>ng build --prod --base-href \"/directory/app/\"</code>"
     },
-    "httpsRedirection": {
-      "header": "Do you need a redirection from HTTP to HTTPS?"
+    "redirection": {
+      "header": "Do you want to normalize the URL? (e.g. redirection to HTTPS or to www)",
+      "options": {
+        "httpsRedirection": {
+          "label": "Redirect to HTTPS."
+        },
+        "www": {
+          "label": "Insert \"www\". (Please click on question mark)",
+          "description": "Furthermore activate the HTTPS option if you want to use SSL. Otherwise the server redirects to HTTP."
+        }
+      }
     },
     "exclusions": {
       "header": "Do you want to exclude subdirectories?",
