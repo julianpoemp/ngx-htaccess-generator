@@ -173,11 +173,29 @@ ngx-codejar .ngx-codejar-editor{
 }
 
 
-ngx-codejar .codejar-wrap{
-  display:block;
+ngx-codejar .codejar-wrap {
+  display: block;
 }
 
-.alert-dark{
+.alert-dark {
   color: lightblue;
   background: transparent;
+}
+
+.popover {
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
+.popover-arrow {
+  position: absolute;
+}
+
+.tooltip {
+  position: absolute;
+}
+
+.tooltip-arrow {
+  position: absolute;
 }

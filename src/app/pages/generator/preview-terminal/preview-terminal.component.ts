@@ -1,8 +1,9 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import * as clipboard from 'clipboard-polyfill';
 import {AppService} from '../../../app.service';
 import hljs from 'highlight.js';
-import {CodeJarContainer, NgxCodeJarComponent} from 'ngx-codejar';
+import {CodeJarContainer} from 'ngx-codejar';
+import {TooltipDirective} from "ngx-bootstrap/tooltip";
+import {writeText} from "clipboard-polyfill";
 
 @Component({
   selector: 'app-preview-terminal',
@@ -18,11 +19,12 @@ export class PreviewTerminalComponent implements OnInit {
   }
 
   public downloadClicked = false;
-  public _htaccessFile =  {
+  public _htaccessFile = {
     blobURL: null,
     content: ''
   };
-  @ViewChild('pop', {static: true}) clipboardTooltip: any;
+
+  @ViewChild('pop', {static: true}) clipboardTooltip: TooltipDirective;
 
   constructor(public appService: AppService) {
   }
@@ -31,7 +33,7 @@ export class PreviewTerminalComponent implements OnInit {
   }
 
   copyToClipBoard() {
-    clipboard.writeText(this._htaccessFile.content);
+    writeText(this._htaccessFile.content);
     this.clipboardTooltip.show();
     setTimeout(() => {
       this.clipboardTooltip.hide();
