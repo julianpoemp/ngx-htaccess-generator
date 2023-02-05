@@ -1,13 +1,15 @@
 export function getHtaccessHeader(version: string) {
   return `# Generated with ngx-htaccess-generator v${version}
 # Check for updates: https://julianpoemp.github.io/ngx-htaccess-generator/
-#
+`;
+}
+
+export function getTransparencyNotice() {
+  return `#
 # Transparency notice: Some parts were extracted from
 # Apache Server Configs v5.0.0 | MIT License
 # https://github.com/h5bp/server-configs-apache
-# Extracted parts are wrapped by "START Extract from ASC"
-
-`;
+# Extracted parts are wrapped by "START Extract from ASC"`
 }
 
 export function getHtaccessDefaults() {

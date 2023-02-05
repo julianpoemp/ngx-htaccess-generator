@@ -1,6 +1,14 @@
-import {getBrowserCachingFix, getHtaccessDefaults, getHtaccessHeader, getRedirection, getRemoveServerSignature} from '../htaccess.sections';
+import {
+  getBrowserCachingFix,
+  getHtaccessDefaults,
+  getHtaccessHeader,
+  getRedirection,
+  getRemoveServerSignature,
+  getTransparencyNotice
+} from '../htaccess.sections';
 
 export class HtaccessGenerator {
+
   private content: HTAccessJSON = {
     ifModule: {
       mod_headers: [],
@@ -18,6 +26,7 @@ export class HtaccessGenerator {
 
   public generate(): string {
     // add default redirection to index.html
+    let ascInserted = false;
     this.content.ifModule.mod_rewrite.push(
       'RewriteEngine On'
     );
@@ -46,6 +55,7 @@ export class HtaccessGenerator {
     }
 
     if (this.questions.mimeTypes.checked) {
+      ascInserted = true;
       this.addMimeOptions();
     }
 
@@ -54,6 +64,14 @@ export class HtaccessGenerator {
     }
 
     let result = getHtaccessHeader(this.version);
+
+    if (ascInserted) {
+      result += getTransparencyNotice();
+      result += '\n\n';
+    } else {
+      result += '\n';
+    }
+
     result += this.convertHtaccessJSONToString(this.content);
 
     return result;
